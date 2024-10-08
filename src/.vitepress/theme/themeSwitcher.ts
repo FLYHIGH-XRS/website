@@ -1,3 +1,5 @@
+import { onMounted } from 'vue';
+
 export const setupThemeSwitcher = () => {
     const updateBootstrapTheme = () => {
         // 确保在客户端环境中执行
@@ -16,19 +18,19 @@ export const setupThemeSwitcher = () => {
     };
 
     // 仅在浏览器环境中执行
-    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-        // 初始化时同步 Bootstrap 主题
-        updateBootstrapTheme();
+    onMounted(() => {
+        if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+            // 页面加载时立即检查当前主题
+            updateBootstrapTheme();
 
-        // 监听 localStorage 变化，同步 VitePress 和 Bootstrap 主题切换
-        window.addEventListener('storage', (event: StorageEvent) => {
-            if (event.key === 'vitepress-theme-appearance') {
-                updateBootstrapTheme();
-            }
-        });
+            // 监听 localStorage 变化，同步 VitePress 和 Bootstrap 主题切换
+            window.addEventListener('storage', (event: StorageEvent) => {
+                if (event.key === 'vitepress-theme-appearance') {
+                    updateBootstrapTheme();
+                }
+            });
 
-        // 监听 VitePress 主题切换按钮点击事件
-        document.addEventListener('DOMContentLoaded', () => {
+            // 监听 VitePress 主题切换按钮点击事件
             const toggleButton = document.querySelector('.vitepress-theme-appearance-toggle');
             if (toggleButton) {
                 toggleButton.addEventListener('click', () => {
@@ -37,6 +39,6 @@ export const setupThemeSwitcher = () => {
                     }, 0);
                 });
             }
-        });
-    }
+        }
+    });
 };
