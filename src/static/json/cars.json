@@ -1,0 +1,542 @@
+[
+    {
+        "visualModel": 999,
+        "name": "所有车辆"
+    },
+    {
+        "visualModel": 0,
+        "name": "Chevrolet ZR1 [ZR1]"
+    },
+    {
+        "visualModel": 1,
+        "name": "Chevrolet ZR1 (出租车规格) [ZR1T]"
+    },
+    {
+        "visualModel": 2,
+        "name": "Chevrolet CAMARO SS RS [CAMARO]"
+    },
+    {
+        "visualModel": 3,
+        "name": "Chevrolet CAMARO SS RS (哑光黑) [CAMARO]"
+    },
+    {
+        "visualModel": 4,
+        "name": "Chevrolet CORVETTE Stingray [C3]"
+    },
+    {
+        "visualModel": 5,
+        "name": "Mazda ROADSTER RS RHT <MX-5 RS RHT> [NCEC]"
+    },
+    {
+        "visualModel": 6,
+        "name": "Mazda RX-7 Type R [FD3S]"
+    },
+    {
+        "visualModel": 7,
+        "name": "Mazda SAVANNA RX-7 <RX-7 GT-X> [FC3S]"
+    },
+    {
+        "visualModel": 8,
+        "name": "Mazda RX-8 Type S [SE3P]"
+    },
+    {
+        "visualModel": 9,
+        "name": "Mazda EUNOS COSMO TYPE－S [JCESE]"
+    },
+    {
+        "visualModel": 10,
+        "name": "Mazda MAZDASPEED ATENZA <MAZDA6 MPS> [GG3P]"
+    },
+    {
+        "visualModel": 11,
+        "name": "Mazda MAZDASPEED ATENZA <MAZDA6 MPS> (教练车规格) [GG3PS]"
+    },
+    {
+        "visualModel": 12,
+        "name": "Mazda SAVANNA RX-7 TURBO SE－Limited [SA22]"
+    },
+    {
+        "visualModel": 13,
+        "name": "Mazda COSMO SPORT <110S> [L10B]"
+    },
+    {
+        "visualModel": 14,
+        "name": "Mitsubishi LANCER EvolutionX GSR [CZ4A]"
+    },
+    {
+        "visualModel": 15,
+        "name": "Mitsubishi LANCER Evolution IX MR GSR [CT9A9_MR]"
+    },
+    {
+        "visualModel": 16,
+        "name": "Mitsubishi LANCER Evolution VIII MR GSR [CT9A8_GSR]"
+    },
+    {
+        "visualModel": 17,
+        "name": "Mitsubishi LANCER Evolution VIII MR RS [CT9A8_RS]"
+    },
+    {
+        "visualModel": 18,
+        "name": "Mitsubishi LANCER Evolution VI RS [CP9A6_RS]"
+    },
+    {
+        "visualModel": 19,
+        "name": "Mitsubishi LANCER Evolution VI GSR [CP9A6_GSR]"
+    },
+    {
+        "visualModel": 20,
+        "name": "Mitsubishi LANCER Evolution V GSR [CP9A5_GSR]"
+    },
+    {
+        "visualModel": 21,
+        "name": "Mitsubishi LANCER Evolution V RS [CP9A5_RS]"
+    },
+    {
+        "visualModel": 22,
+        "name": "Mitsubishi LANCER Evolution III GSR [CE9A_GSR]"
+    },
+    {
+        "visualModel": 23,
+        "name": "Mitsubishi LANCER Evolution III RS [CE9A_RS]"
+    },
+    {
+        "visualModel": 24,
+        "name": "Mitsubishi GTO TWIN TURBO [Z16A]"
+    },
+    {
+        "visualModel": 25,
+        "name": "Mitsubishi STARION GSR－VR [A187A]"
+    },
+    {
+        "visualModel": 26,
+        "name": "Mitsubishi PAJERO EVOLUTION [V55W]"
+    },
+    {
+        "visualModel": 27,
+        "name": "Nissan GT-R [BNR35]"
+    },
+    {
+        "visualModel": 28,
+        "name": "Nissan GT-R SpecV [BNR35]"
+    },
+    {
+        "visualModel": 29,
+        "name": "Nissan SKYLINE GT-R VSpecII [BNR34]"
+    },
+    {
+        "visualModel": 30,
+        "name": "Nissan SKYLINE GT-R VSpecII Nur [BNR34_NUR]"
+    },
+    {
+        "visualModel": 31,
+        "name": "Nissan SKYLINE GT-R VSpec [BCNR33]"
+    },
+    {
+        "visualModel": 32,
+        "name": "Nissan SKYLINE GT-R [BNR32]"
+    },
+    {
+        "visualModel": 33,
+        "name": "Nissan SKYLINE GT-R [KPGC10]"
+    },
+    {
+        "visualModel": 34,
+        "name": "Nissan FAIRLADY Z Version ST [Z34]"
+    },
+    {
+        "visualModel": 35,
+        "name": "Nissan FAIRLADY Z VersionS [Z33]"
+    },
+    {
+        "visualModel": 36,
+        "name": "Nissan FAIRLADY Z 300ZX [Z32]"
+    },
+    {
+        "visualModel": 37,
+        "name": "Nissan FAIRLADY Z 300ZX [Z31 / Z31ANIV]"
+    },
+    {
+        "visualModel": 39,
+        "name": "Nissan FAIRLADY Z [S30]"
+    },
+    {
+        "visualModel": 40,
+        "name": "Nissan SILVIA SpecR [S15]"
+    },
+    {
+        "visualModel": 41,
+        "name": "Nissan 180SX TYPEIII [RPS13]"
+    },
+    {
+        "visualModel": 42,
+        "name": "Nissan SKYLINE COUPE 370GT Type S [CV36]"
+    },
+    {
+        "visualModel": 43,
+        "name": "Nissan FUGA 370GT Type S [Y51]"
+    },
+    {
+        "visualModel": 47,
+        "name": "Subaru IMPREZA WRX STI [GRB]"
+    },
+    {
+        "visualModel": 48,
+        "name": "Subaru IMPREZA WRX STI (F型) [GDBF]"
+    },
+    {
+        "visualModel": 49,
+        "name": "Subaru IMPREZA WRX Sti (C型) [GDB]"
+    },
+    {
+        "visualModel": 50,
+        "name": "Subaru IMPREZA WRX Sti SpecC Limited (C型) [GDB_C]"
+    },
+    {
+        "visualModel": 51,
+        "name": "Subaru IMPREZA WRX typeRA Sti VersionVI [GC8_RA]"
+    },
+    {
+        "visualModel": 52,
+        "name": "Subaru IMPREZA WRX Sti VersionVI [GC8]"
+    },
+    {
+        "visualModel": 53,
+        "name": "Subaru LEGACY B4 2.0GT SpecB [BL5]"
+    },
+    {
+        "visualModel": 54,
+        "name": "Subaru ALCYONE SVX Version L [CXD]"
+    },
+    {
+        "visualModel": 55,
+        "name": "Subaru R2 [RC2]"
+    },
+    {
+        "visualModel": 56,
+        "name": "Subaru LEGACY B4 2.5GT S Package [BM9]"
+    },
+    {
+        "visualModel": 57,
+        "name": "Toyota SUPRA RZ [JZA80]"
+    },
+    {
+        "visualModel": 58,
+        "name": "Toyota SUPRA 2.5GT TWIN TURBO R [JZA70]"
+    },
+    {
+        "visualModel": 59,
+        "name": "Toyota MR2 GT-S [SW20]"
+    },
+    {
+        "visualModel": 60,
+        "name": "Toyota CHASER Tourer V [JZX100]"
+    },
+    {
+        "visualModel": 61,
+        "name": "Toyota CELSIOR [UCF10]"
+    },
+    {
+        "visualModel": 66,
+        "name": "Toyota CELSIOR (出租车规格) [UCF10T]"
+    },
+    {
+        "visualModel": 71,
+        "name": "Toyota ARISTO V300 VERTEX EDITION [JZS161]"
+    },
+    {
+        "visualModel": 72,
+        "name": "Toyota ARISTO V300 VERTEX EDITION (出租车规格) [JZS161T]"
+    },
+    {
+        "visualModel": 73,
+        "name": "Toyota COROLLA [NZE121]"
+    },
+    {
+        "visualModel": 74,
+        "name": "Toyota HIACE WAGON [KZH100G]"
+    },
+    {
+        "visualModel": 75,
+        "name": "Toyota HIACE WAGON (高增程) [KZH100GH]"
+    },
+    {
+        "visualModel": 76,
+        "name": "Toyota CROWN ATHLETE [GRS204]"
+    },
+    {
+        "visualModel": 77,
+        "name": "Toyota SPRINTER TRUENO GT APEX [AE86]"
+    },
+    {
+        "visualModel": 78,
+        "name": "Toyota CELICA XX 2800GT [MA61]"
+    },
+    {
+        "visualModel": 79,
+        "name": "Toyota 2000GT [MF10]"
+    },
+    {
+        "visualModel": 80,
+        "name": "Toyota 2000GT (哑光黑) [MF10]"
+    },
+    {
+        "visualModel": 81,
+        "name": "BMW Z4 S DRIVE 35is [E89]"
+    },
+    {
+        "visualModel": 82,
+        "name": "BMW M3 [E92]"
+    },
+    {
+        "visualModel": 83,
+        "name": "Chevrolet Camaro Z28 [Z28]"
+    },
+    {
+        "visualModel": 84,
+        "name": "Chevrolet Corvette STING RAY [C2]"
+    },
+    {
+        "visualModel": 85,
+        "name": "Mazda EUNOS ROADSTER <MX-5> [NA6CE]"
+    },
+    {
+        "visualModel": 86,
+        "name": "Mazda SAVANNA GT <RX-3> [S124A]"
+    },
+    {
+        "visualModel": 87,
+        "name": "Mercedes-Benz 500E [W124]"
+    },
+    {
+        "visualModel": 88,
+        "name": "Mercedes-Benz SLK 350 BlueEFFICIENCY [R172]"
+    },
+    {
+        "visualModel": 89,
+        "name": "Mitsubishi GALANT VR-4 [E39A]"
+    },
+    {
+        "visualModel": 90,
+        "name": "Nissan GLORIA Gran Turismo ULTIMA [Y33]"
+    },
+    {
+        "visualModel": 91,
+        "name": "Nissan SKYLINE RS X [R30]"
+    },
+    {
+        "visualModel": 92,
+        "name": "Nissan STAGEA Autech Version 260RS [WC34]"
+    },
+    {
+        "visualModel": 94,
+        "name": "Subaru WRX STI [GVB]"
+    },
+    {
+        "visualModel": 95,
+        "name": "Subaru BRZ [ZC6]"
+    },
+    {
+        "visualModel": 96,
+        "name": "Toyota SOARER 2.5GT-TWIN TURBO [JZZ30]"
+    },
+    {
+        "visualModel": 97,
+        "name": "Toyota 86 GT [ZN6]"
+    },
+    {
+        "visualModel": 98,
+        "name": "Toyota HIACE VAN [KDH201V]"
+    },
+    {
+        "visualModel": 99,
+        "name": "特殊分身 [MXG]"
+    },
+    {
+        "visualModel": 100,
+        "name": "BMW Z4 S DRIVE 35is (安全车规格) [E89P]"
+    },
+    {
+        "visualModel": 101,
+        "name": "BMW M3 (哑光黑) [E92]"
+    },
+    {
+        "visualModel": 102,
+        "name": "Chevrolet CAMARO SS RS (出租车规格) [CAMAROT]"
+    },
+    {
+        "visualModel": 103,
+        "name": "Mercedes-Benz SLK 350 BlueEFFICIENCY (出租车规格) [R172P]"
+    },
+    {
+        "visualModel": 104,
+        "name": "Toyota HIACE VAN (高增程) [KDH201VH]"
+    },
+    {
+        "visualModel": 105,
+        "name": "BMW M1 [E26]"
+    },
+    {
+        "visualModel": 106,
+        "name": "BMW M3 CSL [E46]"
+    },
+    {
+        "visualModel": 107,
+        "name": "Mercedes-Benz SLS AMG [C197]"
+    },
+    {
+        "visualModel": 108,
+        "name": "Mercedes-Benz 190E 2.5-16 Evolution2 [W201]"
+    },
+    {
+        "visualModel": 109,
+        "name": "Audi R8 5.2 FSI quattro [R8]"
+    },
+    {
+        "visualModel": 110,
+        "name": "Audi RS 4 Avant [RS4]"
+    },
+    {
+        "visualModel": 111,
+        "name": "Dodge Viper SRT10 [SRT10]"
+    },
+    {
+        "visualModel": 112,
+        "name": "Dodge Charger SRT8 [SRT8]"
+    },
+    {
+        "visualModel": 113,
+        "name": "Subaru LEVORG [VMG]"
+    },
+    {
+        "visualModel": 114,
+        "name": "BMW M6 Gran Coupe [M6]"
+    },
+    {
+        "visualModel": 115,
+        "name": "BMW 2002 TURBO [2002]"
+    },
+    {
+        "visualModel": 116,
+        "name": "Mazda ROADSTER ND [ND5RC]"
+    },
+    {
+        "visualModel": 117,
+        "name": "Nissan LAUREL 25 CLUB－S [C35]"
+    },
+    {
+        "visualModel": 118,
+        "name": "Nissan GT-R NISMO [BNR35]"
+    },
+    {
+        "visualModel": 119,
+        "name": "Nissan FAIRLADY Z NISMO [Z34]"
+    },
+    {
+        "visualModel": 121,
+        "name": "Toyota MARKII TOURER V [MARK2]"
+    },
+    {
+        "visualModel": 122,
+        "name": "BMW MINI Cooper S Crossover [R60]"
+    },
+    {
+        "visualModel": 123,
+        "name": "Lamborghini Aventador LP700-4 [LP700]"
+    },
+    {
+        "visualModel": 124,
+        "name": "Lamborghini Countach LP400 [LP400]"
+    },
+    {
+        "visualModel": 125,
+        "name": "Lamborghini Miura P400S [P400S]"
+    },
+    {
+        "visualModel": 126,
+        "name": "Lamborghini Diablo VT [DIABLO]"
+    },
+    {
+        "visualModel": 127,
+        "name": "Honda NSX [NC1]"
+    },
+    {
+        "visualModel": 128,
+        "name": "Honda NSX [NA1]"
+    },
+    {
+        "visualModel": 129,
+        "name": "Honda NSX-R [NA2]"
+    },
+    {
+        "visualModel": 130,
+        "name": "Honda S660 [JW5]"
+    },
+    {
+        "visualModel": 131,
+        "name": "Honda S2000 [AP2]"
+    },
+    {
+        "visualModel": 132,
+        "name": "Nissan GT-R PureEdition [BNR35]"
+    },
+    {
+        "visualModel": 133,
+        "name": "Nissan SILVIA K's [PS13]"
+    },
+    {
+        "visualModel": 136,
+        "name": "Honda INTEGRA TYPE R [DC2]"
+    },
+    {
+        "visualModel": 137,
+        "name": "Mazda ROADSTER ND RF [NDERC]"
+    },
+    {
+        "visualModel": 138,
+        "name": "Nissan LEOPARD Ultima [UF31]"
+    },
+    {
+        "visualModel": 139,
+        "name": "Nissan FAIRLADY Z S130 [GS130]"
+    },
+    {
+        "visualModel": 140,
+        "name": "Porsche 911 Turbo S [930TS]"
+    },
+    {
+        "visualModel": 141,
+        "name": "Porsche 911 Turbo 3.6 [964T36]"
+    },
+    {
+        "visualModel": 142,
+        "name": "Porsche 911 Turbo S [991TS]"
+    },
+    {
+        "visualModel": 143,
+        "name": "Porsche 928GT [928GT]"
+    },
+    {
+        "visualModel": 144,
+        "name": "Porsche 718 CAYMAN S [718CS]"
+    },
+    {
+        "visualModel": 145,
+        "name": "Toyota GR SUPRA RZ [A90]"
+    },
+    {
+        "visualModel": 146,
+        "name": "Nissan SKYLINE 2000 GT-R [C110]"
+    },
+    {
+        "visualModel": 147,
+        "name": "Nissan SILVIA K's AERO [S14]"
+    },
+    {
+        "visualModel": 148,
+        "name": "Nissan GT-R50 by Italdesign [BNR35]"
+    },
+    {
+        "visualModel": 149,
+        "name": "BMW M4 Coupe [M4]"
+    }
+]
