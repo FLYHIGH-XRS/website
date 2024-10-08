@@ -197,6 +197,8 @@
 <script>
 import axios from 'axios';
 import carModels from '../../static/json/cars.json';
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 
 export default {
     name: "TimeAttackView",
@@ -243,6 +245,13 @@ export default {
                 }
             }).catch((error) => {
                 console.log(error);
+                toast("获取数据过程中发生错误：\n" + error, {
+                    "theme": "colored",
+                    "type": "error",
+                    "position": "top-center",
+                    "autoClose": 2000,
+                    "dangerouslyHTMLString": true
+                });
             })
                 .finally(() => {
                     // 恢复下拉框
