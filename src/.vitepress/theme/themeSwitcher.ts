@@ -3,21 +3,19 @@ export const setupThemeSwitcher = () => {
         // 确保在客户端环境中执行
         if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
             // 获取 VitePress 当前主题模式
-            const isDarkMode = localStorage.getItem('vitepress-theme-appearance') === 'dark';
-
-            // 检查是否能获取到主题设置
-            if (!localStorage.getItem('vitepress-theme-appearance')) {
-                alert('无法获取主题设置，请确保已正确配置主题。');
-                return; // 如果没有找到主题设置，提前返回
-            }
+            const isDarkMode = localStorage.getItem('vitepress-theme-appearance');
 
             const htmlElement = document.documentElement;
 
             // 根据当前 VitePress 主题切换 Bootstrap 的主题
-            if (isDarkMode) {
+            if (isDarkMode === "dark") {
                 htmlElement.setAttribute('data-bs-theme', 'dark');
-            } else {
+            } else if (isDarkMode === "light") {
                 htmlElement.setAttribute('data-bs-theme', 'light');
+            } else {
+                const isSystemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                alert(isSystemDark ? '系统主题为深色模式' : '系统主题为浅色模式');
+                htmlElement.setAttribute('data-bs-theme', isSystemDark ? 'dark' : 'light');
             }
         }
     };
