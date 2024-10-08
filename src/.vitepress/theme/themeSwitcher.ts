@@ -14,7 +14,6 @@ export const setupThemeSwitcher = () => {
                 htmlElement.setAttribute('data-bs-theme', 'light');
             } else {
                 const isSystemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                alert(isSystemDark ? '系统主题为深色模式' : '系统主题为浅色模式');
                 htmlElement.setAttribute('data-bs-theme', isSystemDark ? 'dark' : 'light');
             }
         }
@@ -42,6 +41,12 @@ export const setupThemeSwitcher = () => {
                     }, 0);
                 });
             }
+        });
+
+        // 监听系统主题变化
+        const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+        mediaQueryList.addEventListener('change', () => {
+            updateBootstrapTheme(); // 系统主题变化时更新 Bootstrap 主题
         });
     }
 };
