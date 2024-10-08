@@ -90,7 +90,7 @@
         </thead>
         <tbody>
             <tr class="table-row" style="cursor: pointer;" v-for="(entry, index) in getPaginatedData()" :key="index"
-                title="点击查看此项详细数据" @click="this.modalData = entry" data-bs-target="#detailModal" data-bs-toggle="modal">
+                title="点击查看此项详细数据" @click="modalData = entry" data-bs-target="#detailModal" data-bs-toggle="modal">
                 <td :class="getRowClass(index)">
                     <div style="font-weight: bolder;">{{ index + 1 + (currentPage - 1) * itemsPerPage }}</div>
                 </td>
@@ -119,7 +119,7 @@
         style="width: 100%; table-layout: fixed;">
         <tbody>
             <tr class="rankingBody mobile_table_body" v-for="(entry, index) in getPaginatedData()" :key="index"
-                title="点击查看此项详细数据" @click="this.modalData = entry" data-bs-target="#detailModal" data-bs-toggle="modal">
+                title="点击查看此项详细数据" @click="modalData = entry" data-bs-target="#detailModal" data-bs-toggle="modal">
                 <th class="rank form-text" :class="getRowClass(index)">{{ index + 1 + (currentPage - 1) * itemsPerPage
                     }}</th>
                 <td class="name form-text">
@@ -145,52 +145,55 @@
     </table>
 
     <!-- 详细数据 -->
-    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="detailModalLabel">详细数据</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="card" style="width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title" style="font-size: larger; font-weight:">{{
-                                this.modalData.car.name }}</h5>
-                            <p class="card-text" style="margin-top: -5px; margin-bottom: -10px;">{{
-                                this.modalData.carName }}</p>
-                        </div>
-                        <ul class="list-group list-group-flush lg-vp-ul-fix">
-                            <li class="list-group-item lg-vp-li-fix">游玩时间：{{ this.modalData.playedAtTime }}</li>
-                            <li class="list-group-item lg-vp-li-fix">总用时：{{ this.modalData.totalTime }}</li>
-                            <li class="list-group-item lg-vp-li-fix">行走区域：{{ this.modalData.racingCourse }}</li>
-                            <li class="list-group-item lg-vp-li-fix">操控等级：{{ this.modalData.controlLevel }}</li>
-                        </ul>
+    <ClientOnly>
+        <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true"
+            v-if="modalData">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="detailModalLabel">详细数据</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="card" style="width: 100%; margin-top: 10px;">
-                        <div class="card-header">
-                            分段用时
+                    <div class="modal-body">
+                        <div class="card" style="width: 100%;">
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-size: larger; font-weight:">{{
+                                    this.modalData.car.name }}</h5>
+                                <p class="card-text" style="margin-top: -5px; margin-bottom: -10px;">{{
+                                    this.modalData.carName }}</p>
+                            </div>
+                            <ul class="list-group list-group-flush lg-vp-ul-fix">
+                                <li class="list-group-item lg-vp-li-fix">游玩时间：{{ this.modalData.playedAtTime }}</li>
+                                <li class="list-group-item lg-vp-li-fix">总用时：{{ this.modalData.totalTime }}</li>
+                                <li class="list-group-item lg-vp-li-fix">行走区域：{{ this.modalData.racingCourse }}</li>
+                                <li class="list-group-item lg-vp-li-fix">操控等级：{{ this.modalData.controlLevel }}</li>
+                            </ul>
                         </div>
-                        <ul class="list-group list-group-flush lg-vp-ul-fix">
-                            <li class="list-group-item lg-vp-li-fix">CP1: {{ this.modalData.sec1Time }}</li>
-                            <li class="list-group-item lg-vp-li-fix">CP2: {{ this.modalData.sec2Time }}</li>
-                            <li class="list-group-item lg-vp-li-fix">CP3: {{ this.modalData.sec3Time }}</li>
-                            <li class="list-group-item lg-vp-li-fix">CP4: {{ this.modalData.sec4Time }}</li>
-                            <li v-if="Number(modalData.sec5Time) !== 0" class="list-group-item">CP5: {{
-                                modalData.sec5Time }}</li>
-                            <li v-if="Number(modalData.sec6Time) !== 0" class="list-group-item">CP6: {{
-                                modalData.sec6Time }}</li>
-                            <li v-if="Number(modalData.sec7Time) !== 0" class="list-group-item">CP7: {{
-                                modalData.sec7Time }}</li>
-                        </ul>
+                        <div class="card" style="width: 100%; margin-top: 10px;">
+                            <div class="card-header">
+                                分段用时
+                            </div>
+                            <ul class="list-group list-group-flush lg-vp-ul-fix">
+                                <li class="list-group-item lg-vp-li-fix">CP1: {{ this.modalData.sec1Time }}</li>
+                                <li class="list-group-item lg-vp-li-fix">CP2: {{ this.modalData.sec2Time }}</li>
+                                <li class="list-group-item lg-vp-li-fix">CP3: {{ this.modalData.sec3Time }}</li>
+                                <li class="list-group-item lg-vp-li-fix">CP4: {{ this.modalData.sec4Time }}</li>
+                                <li v-if="Number(this.modalData.sec5Time) !== 0" class="list-group-item">CP5: {{
+                                    this.modalData.sec5Time }}</li>
+                                <li v-if="Number(this.modalData.sec6Time) !== 0" class="list-group-item">CP6: {{
+                                    this.modalData.sec6Time }}</li>
+                                <li v-if="Number(this.modalData.sec7Time) !== 0" class="list-group-item">CP7: {{
+                                    this.modalData.sec7Time }}</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </ClientOnly>
 
 </template>
 
@@ -211,11 +214,20 @@ export default {
             picsPath: 'https://pics-a1c.pages.dev', // 图片URL
             modalData: {
                 car: {
-                    name: null,
+                    name: 'GUEST', // 车辆名称
                 },
-                carName: null,
-                totalTime: null,
-                controlLevel: null,
+                carName: 'Car Name', // 车辆名称
+                playedAtTime: `0000/00/00 00'00"00`, // 游玩时间
+                totalTime: `00'00"00`, // 总用时
+                racingCourse: 'C1内环', // 行走区域
+                controlLevel: '740HP/B', // 操控等级
+                sec1Time: `00'00"00`, // 分段用时
+                sec2Time: `00'00"00`, // 分段用时
+                sec3Time: `00'00"00`, // 分段用时
+                sec4Time: `00'00"00`, // 分段用时
+                sec5Time: `00'00"00`, // 分段用时
+                sec6Time: `00'00"00`, // 分段用时
+                sec7Time: `00'00"00`, // 分段用时
             }, // 用于存储模态框数据
         }
     },
