@@ -54,27 +54,41 @@
     </div>
     <p class="form-text" id="loadingText" style="font-size: large;" hidden>加载数据中......请稍候</p>
 
-    <!-- 分页 -->
-    <nav aria-label="Page navigation" v-if="totalPages() > 1" class="d-flex justify-content-end"
-        style="margin-bottom: -20px; margin-top: -25px;">
-        <ul class="pagination justify-content-center" style="list-style: none;">
-            <li class="page-item page-item-vp-fix" :class="{ disabled: currentPage === 1 }">
-                <a class="page-link page-link-vp-fix" href="#" @click.prevent="changePage(1)">&laquo;</a>
-            </li>
-            <li class="page-item page-item-vp-fix" :class="{ disabled: currentPage === 1 }">
-                <a class="page-link page-link-vp-fix" href="#" @click.prevent="changePage(currentPage - 1)">&lsaquo;</a>
-            </li>
-            <li class="page-item page-item-vp-fix active">
-                <a class="page-link page-link-vp-fix">{{ currentPage }}</a>
-            </li>
-            <li class="page-item page-item-vp-fix" :class="{ disabled: currentPage === totalPages() }">
-                <a class="page-link page-link-vp-fix" href="#" @click.prevent="changePage(currentPage + 1)">&rsaquo;</a>
-            </li>
-            <li class="page-item page-item-vp-fix" :class="{ disabled: currentPage === totalPages() }">
-                <a class="page-link page-link-vp-fix" href="#" @click.prevent="changePage(totalPages())">&raquo;</a>
-            </li>
-        </ul>
-    </nav>
+    <!-- 重新获取按钮与分页 -->
+    <div class="row">
+        <div class="col">
+            <button type="button" id="reloadButton" class="btn btn-primary" @click="getTimeAttackResult()" hidden>
+                <span class="spinner-border spinner-border-sm" id="reloadBtnSpinner" role="status" aria-hidden="true"
+                    hidden></span>
+                重新获取
+            </button>
+        </div>
+        <div class="col">
+            <nav aria-label="Page navigation" v-if="totalPages() > 1" class="d-flex justify-content-end"
+                style="margin-bottom: -20px; margin-top: -16px;">
+                <ul class="pagination justify-content-center" style="list-style: none;">
+                    <li class="page-item page-item-vp-fix" :class="{ disabled: currentPage === 1 }">
+                        <a class="page-link page-link-vp-fix" href="#" @click.prevent="changePage(1)">&laquo;</a>
+                    </li>
+                    <li class="page-item page-item-vp-fix" :class="{ disabled: currentPage === 1 }">
+                        <a class="page-link page-link-vp-fix" href="#"
+                            @click.prevent="changePage(currentPage - 1)">&lsaquo;</a>
+                    </li>
+                    <li class="page-item page-item-vp-fix active">
+                        <a class="page-link page-link-vp-fix">{{ currentPage }}</a>
+                    </li>
+                    <li class="page-item page-item-vp-fix" :class="{ disabled: currentPage === totalPages() }">
+                        <a class="page-link page-link-vp-fix" href="#"
+                            @click.prevent="changePage(currentPage + 1)">&rsaquo;</a>
+                    </li>
+                    <li class="page-item page-item-vp-fix" :class="{ disabled: currentPage === totalPages() }">
+                        <a class="page-link page-link-vp-fix" href="#"
+                            @click.prevent="changePage(totalPages())">&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
     <!-- 电脑端布局 -->
     <table class="table table-striped table-hover pc_table" id="pc_table" style="width: 100%; table-layout: fixed;">
@@ -145,7 +159,7 @@
     </table>
 
     <!-- 详细数据 -->
-    <ClientOnly>
+    <ClientOnly><!-- BYD不加这个编译不了是吧 -->
         <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true"
             v-if="modalData">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -242,10 +256,15 @@ export default {
             // 隐藏表格
             document.getElementById('pc_table').hidden = true;
             document.getElementById('mobile_table').hidden = true;
+            // 重载按钮与加载动画
+            document.getElementById('reloadButton').setAttribute("disabled", "disabled");
+            document.getElementById('reloadBtnSpinner').hidden = false;
             // 获取数据
             axios.post('/api/timeattack', {
                 course: document.getElementById('floatingSelectGrid_Course').value,
-                carModel: document.getElementById('floatingSelectGrid_CarModel').value
+                carModel: document.getElementById('floatingSelectGrid_CarModel').value,
+            }, {
+                timeout: 10000 // 10s超时
             }).then((response) => {
                 // 如果没有数据则返回
                 if (response.data.length === 0) {
@@ -279,6 +298,11 @@ export default {
                     // 显示表格
                     document.getElementById('pc_table').hidden = false;
                     document.getElementById('mobile_table').hidden = false;
+                    // 重载按钮
+                    document.getElementById('reloadButton').hidden = false;
+                    // 重载按钮与加载动画
+                    document.getElementById('reloadButton').removeAttribute("disabled");
+                    document.getElementById('reloadBtnSpinner').hidden = true;
                 });
         },
         getRowClass(index) {
