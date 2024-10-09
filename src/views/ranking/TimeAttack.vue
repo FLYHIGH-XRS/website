@@ -117,7 +117,7 @@
                 </td>
                 <td :class="getRowClass(index)">
                     <img :src="picsPath + '/wmmt/carModels/' + entry.car.visualModel + '.png'" class="img-thumbnail"
-                        :alt="entry.carName" style="background: black; width: 150px;">
+                        :alt="entry.carName" style="background: black; width: 150px;" :title="entry.carName">
                 </td>
                 <td :class="getRowClass(index)">{{ entry.controlLevel }}</td>
                 <td style="padding: 0px;" :class="getRowClass(index)">
@@ -145,7 +145,7 @@
                 </td>
                 <td class="type form-text">
                     <img :src="picsPath + '/wmmt/carModels/' + entry.car.visualModel + '.png'" class="img-thumbnail"
-                        :alt="entry.carName" style="background: black; margin-bottom: 8px;">
+                        :alt="entry.carName" style="background: black; margin-bottom: 8px;" :title="entry.carName">
                 </td>
                 <td class="level form-text">
                     <img :src="picsPath + '/wmmt/level/' + entry.car.level + '.png'" :alt="entry.car.level"
