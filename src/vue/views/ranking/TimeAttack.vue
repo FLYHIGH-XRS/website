@@ -105,22 +105,22 @@
         <tbody>
             <tr class="table-row" style="cursor: pointer;" v-for="(entry, index) in getPaginatedData()" :key="index"
                 title="点击查看此项详细数据" @click="modalData = entry" data-bs-target="#detailModal" data-bs-toggle="modal">
-                <td :class="getRowClass(index)">
+                <td :class="getRowClass(index)" style="width: 5%;">
                     <div style="font-weight: bolder;">{{ index + 1 + (currentPage - 1) * itemsPerPage }}</div>
                 </td>
-                <td :class="getRowClass(index)">
+                <td :class="getRowClass(index)" style="width: 10%;">
                     <div style="font-weight: bolder;">{{ entry.car.name }}</div><br>
                     <div style="font-size: 11px; margin-top: -30px;">{{ entry.car.windowStickerString }}</div>
                 </td>
-                <td :class="getRowClass(index)">
+                <td :class="getRowClass(index)" style="width: 20%;">
                     <div style="font-weight: bolder;">{{ entry.totalTime }}</div>
                 </td>
-                <td :class="getRowClass(index)">
+                <td :class="getRowClass(index)" style="width: 25%;">
                     <img :src="picsPath + '/wmmt/carModels/' + entry.car.visualModel + '.png'" class="img-thumbnail"
                         :alt="entry.carName" style="background: black; width: 150px;" :title="entry.carName">
                 </td>
-                <td :class="getRowClass(index)">{{ entry.controlLevel }}</td>
-                <td style="padding: 0px;" :class="getRowClass(index)">
+                <td :class="getRowClass(index)" style="width: 20%;">{{ entry.controlLevel }}</td>
+                <td style="padding: 0px; width: 20%;" :class="getRowClass(index)">
                     <img :src="picsPath + '/wmmt/level/' + entry.car.level + '.png'" class="img-fluid"
                         :alt="entry.car.level" style="width: 200px;">
                 </td>
@@ -374,15 +374,15 @@ export default {
 }
 
 .table tr th {
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
+    text-align: center !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
 }
 
 .table tr td {
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
+    text-align: center !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
 }
 
 .pc_table {

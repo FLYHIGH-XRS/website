@@ -12,6 +12,9 @@ import axios from 'axios'
 // @ts-ignore 不加老是报错
 axios.defaults.baseURL = import.meta.env.VITE_APP_BASE_URL;
 
+// 时间线
+import "vitepress-markdown-timeline/dist/theme/index.css";
+
 import { setupThemeSwitcher } from './themeSwitcher';
 
 export default {

@@ -19,7 +19,7 @@ title: 最新活动
 
 ## 活动奖励
 
-### 收集全部车辆的颜色就可以获取一个限量比赛用仪表！
+#### 收集全部车辆的颜色就可以获取一个限量比赛用仪表！
 
 ![](https://wanganmaxi-official.com/wanganmaxi6rr/en/event/online/img/001/1.png)
 

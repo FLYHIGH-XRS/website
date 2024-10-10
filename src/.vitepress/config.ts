@@ -3,6 +3,9 @@ import { defineConfig } from 'vitepress'
 import { navbar } from './navbar';
 import { sidebar } from './sidebar';
 
+// 时间线
+import timeline from "vitepress-markdown-timeline";
+
 export default defineConfig({
     lang: 'zh-CN',
     title: "FLYHIGH XRS",
@@ -12,6 +15,9 @@ export default defineConfig({
     markdown: {
         image: {
             lazyLoading: true
+        },
+        config: (md) => {
+            md.use(timeline);
         }
     },
     // 最后更新时间
@@ -43,6 +49,33 @@ export default defineConfig({
         },
         returnToTopLabel: '返回顶部',
         darkModeSwitchLabel: '浅色/深色模式',
-        sidebarMenuLabel: '菜单'
+        sidebarMenuLabel: '菜单',
+        // 搜索（本地）
+        search: {
+            provider: 'local',
+            options: {
+                translations: {
+                    button: {
+                        buttonText: '搜索',
+                        buttonAriaLabel: '搜索'
+                    },
+                    modal: {
+                        displayDetails: '显示详细信息',
+                        resetButtonTitle: '重置搜索结果',
+                        backButtonTitle: '返回上一页',
+                        noResultsText: '没有搜索到',
+                        footer: {
+                            selectText: '选择',
+                            selectKeyAriaLabel: '选择搜索结果',
+                            navigateText: '切换',
+                            navigateUpKeyAriaLabel: '向上切换搜索结果',
+                            navigateDownKeyAriaLabel: '向下切换搜索结果',
+                            closeText: '关闭',
+                            closeKeyAriaLabel: '关闭搜索结果'
+                        }
+                    }
+                },
+            }
+        }
     }
 })

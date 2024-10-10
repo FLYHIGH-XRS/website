@@ -13,6 +13,7 @@
     "dependencies": {
         "axios": "^1.7.7",
         "bootstrap": "^5.3.3",
+        "vitepress-markdown-timeline": "^1.2.1",
         "vue": "^3.5.11",
         "vue3-toastify": "^0.2.3"
     }
