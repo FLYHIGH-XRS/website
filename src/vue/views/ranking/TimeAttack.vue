@@ -296,8 +296,14 @@ export default {
                         document.getElementById('loadingText').hidden = true;
                     }
                     // 显示表格
-                    document.getElementById('pc_table').hidden = false;
-                    document.getElementById('mobile_table').hidden = false;
+                    if (this.leaderboard.length === 0) {
+                        console.log('暂无数据');
+                        document.getElementById('pc_table').hidden = true;
+                        document.getElementById('mobile_table').hidden = true;
+                    } else {
+                        document.getElementById('pc_table').hidden = false;
+                        document.getElementById('mobile_table').hidden = false;
+                    }
                     // 重载按钮
                     document.getElementById('reloadButton').hidden = false;
                     // 重载按钮与加载动画

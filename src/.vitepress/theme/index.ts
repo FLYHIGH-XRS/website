@@ -9,7 +9,8 @@ import './style.css'
 
 // Axios
 import axios from 'axios'
-axios.defaults.baseURL = "https://nw.xenon-rs.tech";
+// @ts-ignore 不加老是报错
+axios.defaults.baseURL = import.meta.env.VITE_APP_BASE_URL;
 
 import { setupThemeSwitcher } from './themeSwitcher';
 
