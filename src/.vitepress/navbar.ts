@@ -15,6 +15,12 @@ export const navbar = [
             { text: '全服冠军争夺战 排行榜', link: '/ranking/ocmRanking' },
         ]
     },
-    { text: '车库', link: '/garage/' },
-    { text: '关于', link: '/about' },
+    { text: '车库', link: '/garage/overview' },
+    {
+        text: '关于',
+        items: [
+            { text: '关于我们', link: '/about/about' },
+            { text: '用户协议', link: '/about/userAgreement' },
+        ]
+    },
 ]

@@ -18,7 +18,9 @@ export default defineConfig({
         },
         config: (md) => {
             md.use(timeline);
-        }
+        },
+        lineNumbers: false, // 暂时有问题
+        codeCopyButtonTitle: '复制代码'
     },
     // 最后更新时间
     lastUpdated: true,
