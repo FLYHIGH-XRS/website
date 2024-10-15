@@ -56,7 +56,6 @@ export default {
         login() {
             // 检测输入
             const isInputValid = validityCheck.loginValidityCheck(this.inputQQNumber, this.inputPassword);
-            console.log(isInputValid);
             if (!isInputValid.checkStatus) {
                 toast(isInputValid.message, {
                     "theme": "colored",

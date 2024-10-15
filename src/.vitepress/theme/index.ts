@@ -61,13 +61,13 @@ function checkIsNeedToLogin(to: string, router: Router) {
     if (needCheckRoutes.includes(to)) {
         const userInfo = sessionStorage.getItem('UserInfo');
         if (!userInfo) {
-            toast("请先登录！\n即将跳转到登录界面......", {
+            /* toast("请先登录！\n即将跳转到登录界面......", {
                 "theme": "colored",
                 "type": "warning",
                 "position": "top-center",
                 "autoClose": 1500,
                 "dangerouslyHTMLString": true
-            })
+            }) */
             // 等待2秒
             setTimeout(() => {
                 router.go('/garage/login');

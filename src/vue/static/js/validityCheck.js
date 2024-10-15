@@ -85,7 +85,7 @@ export function loginValidityCheck(inputQQNumber, inputPassword) {
     return ({ checkStatus: true, message: '检查通过' });
 }
 
-function isValidUserName(inputUserName) {
+export function isValidUserName(inputUserName) {
     const regex = /^[a-zA-Z0-9]+$/;
     return regex.test(inputUserName);
 }
