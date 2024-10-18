@@ -93,19 +93,43 @@
             </div>
         </div>
         <div class="col-12 col-md-5">
-            <div class="card">
+            <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">兑换礼品卡</h5>
                     <div class="mb-2">
                         <label for="formGroupInput_GiftCardCode" class="form-label"
                             style="color: rgb(118, 124, 130); font-size: 14px;">礼品卡号：</label>
                         <input type="text" class="form-control" id="formGroupInput_GiftCardCode"
-                            placeholder="XXXX-XXXX-XXXX-XXXX">
+                            placeholder="XXXX-XXXX-XXXX-XXXX" v-model="code">
                     </div>
                     <div class="gift-card-code">
-                        <button type="button" class="btn btn-success gift-card-code-btn"
-                            @click="exchangeGiftCard()">兑换</button>
+                        <button type="button" class="btn btn-success gift-card-code-btn" id="exchangeGiftCardBtn"
+                            @click="exchangeGiftCard()">
+                            <span class="spinner-border spinner-border-sm" role="status" id="exchangeGiftCardBtnSpinner" aria-hidden="true" hidden></span>
+                            兑换
+                        </button>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">废车卡 ==> 满改券</h5>
+                    <p class="normal-card-text">您可以将废车卡转换为满改券<br>比例为 5:1</p>
+                    <button type="button" style="width: 100%;" id="exchange600ToFTTBtn" class="btn btn-primary">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="exchange600ToFTTBtnSpinner" hidden></span>
+                        兑换（可兑换 {{ calculateFTTExchangeNumber() }} 张）
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-8">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">站点公告</h5>
+                    <p class="normal-card-text">1. 本新站点正处于Beta阶段，如遇意外问题，请带上截图和触发问题的操作联系群主。</p>
+                    <p class="normal-card-text">2. 若因站点问题导致用户数据丢失，请联系群主，我们会给予一定补偿。</p>
                 </div>
             </div>
         </div>
@@ -227,7 +251,9 @@ export default {
             originalPassword: null,
             newPassword: null,
             // 用户名更改
-            newUserName: null
+            newUserName: null,
+            // 兑换礼品卡
+            code: null
         }
     },
     methods: {
@@ -253,13 +279,74 @@ export default {
             })
         },
         exchangeGiftCard() {
-            toast("暂不支持兑换礼品卡", {
-                "theme": "colored",
-                "type": "error",
-                "position": "top-center",
-                "autoClose": 2000,
-                "dangerouslyHTMLString": true
+            if (this.code === null) {
+                toast("请输入兑换码", {
+                    "theme": "colored",
+                    "type": "error",
+                    "position": "top-center",
+                    "autoClose": 2000,
+                    "dangerouslyHTMLString": true
+                })
+                return;
+            }
+            if (!validityCheck.isGiftCardCodeValid(this.code)) {
+                toast("兑换码不符合规范！", {
+                    "theme": "colored",
+                    "type": "error",
+                    "position": "top-center",
+                    "autoClose": 2000,
+                    "dangerouslyHTMLString": true
+                })
+                return;
+            }
+            document.getElementById('exchangeGiftCardBtn').setAttribute("disabled", "disabled");
+            document.getElementById('exchangeGiftCardBtnSpinner').hidden = false;
+            axios.post('/api/exchangeGiftCardCode', {
+                code: this.code,
+                userQQ: this.userInfo.userInfo.userQQ
             })
+                .then(response => {
+                    if (response.data.exchangeGiftCardCodeStatus === true) {
+                        toast("兑换成功！", {
+                            "theme": "colored",
+                            "type": "success",
+                            "position": "top-center",
+                            "autoClose": 2000,
+                            "dangerouslyHTMLString": true
+                        })
+                        this.code = null;
+                        if (response.data.newLotteryTicket !== undefined) {
+                            this.userInfo.userInfo.lotteryTicket = response.data.newLotteryTicket;
+                            sessionStorage.setItem("UserInfo", JSON.stringify(this.userInfo));
+                        }
+                        if (response.data.newXRCredit !== undefined) {
+                            this.userInfo.userInfo.xrCredit = response.data.newXRCredit;
+                            sessionStorage.setItem("UserInfo", JSON.stringify(this.userInfo));
+                        }
+                    } else {
+                        toast("兑换失败！\n" + response.data.message, {
+                            "theme": "colored",
+                            "type": "error",
+                            "position": "top-center",
+                            "autoClose": 2000,
+                            "dangerouslyHTMLString": true
+                        })
+                        this.code = null;
+                    }
+                })
+                .catch(error => {
+                    toast("兑换失败！\n" + error, {
+                        "theme": "colored",
+                        "type": "error",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    })
+                })
+                .finally(() => {
+                    document.getElementById('exchangeGiftCardBtn').removeAttribute("disabled");
+                    document.getElementById('exchangeGiftCardBtnSpinner').hidden = true;
+                });
         },
         resetPassword() {
             document.getElementById('resetBtnModalBtn').setAttribute("disabled", "disabled");
@@ -383,6 +470,55 @@ export default {
                     document.getElementById('editUserNameBtnModalBtn').removeAttribute("disabled");
                     document.getElementById('editUserNameBtnModalBtnSpinner').hidden = true;
                 });
+        },
+        calculateFTTExchangeNumber() {
+            // 5:1兑换
+            return Math.floor(this.userInfo.ticket600HpNumber / 5);
+        },
+        exchange600ToFTT() {
+            document.getElementById('exchange600ToFTTBtn').setAttribute("disabled", "disabled");
+            document.getElementById('exchange600ToFTTBtnSpinner').hidden = false;
+            axios.post('/api/exchangeFTTTicket', {
+                userQQ: this.userInfo.userInfo.userQQ,
+                userPassword: encrypt.encryptPassword(this.userInfo.userInfo.userPassword)
+            }, {
+                timeout: 10000
+            })
+                .then(response => {
+                    if (response.data.exchangeStatus === true) {
+                        toast("兑换成功！", {
+                            "theme": "colored",
+                            "type": "success",
+                            "position": "top-center",
+                            "autoClose": 2000,
+                            "dangerouslyHTMLString": true
+                        });
+                        this.userInfo.ticket600HpNumber = this.userInfo.ticket600HpNumber - 1;
+                        sessionStorage.setItem("UserInfo", JSON.stringify(this.userInfo));
+                    } else {
+                        toast("兑换失败！\n" + response.data.message, {
+                            "theme": "colored",
+                            "type": "error",
+                            "position": "top-center",
+                            "autoClose": 2000,
+                            "dangerouslyHTMLString": true
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    toast("兑换失败！\n遇到了未知错误：\n" + error, {
+                        "theme": "colored",
+                        "type": "error",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    });
+                })
+                .finally(() => {
+                    document.getElementById('exchange600ToFTTBtn').removeAttribute("disabled");
+                    document.getElementById('exchange600ToFTTBtnSpinner').hidden = true;
+                });
         }
     },
     mounted() {
@@ -408,6 +544,11 @@ export default {
             let userInfo = JSON.parse(sessionStorage.getItem('UserInfo'));
             userInfo.isTodayLogin = true;
             sessionStorage.setItem('UserInfo', JSON.stringify(userInfo));
+        }
+
+        // 如果不足数量兑换满改券则禁用兑换按钮
+        if (this.userInfo.ticket600HpNumber < 5) {
+            document.getElementById('exchange600ToFTTBtn').setAttribute("disabled", "disabled");
         }
     }
 }
@@ -449,6 +590,15 @@ export default {
 .gift-card-code {
     display: flex;
     justify-content: flex-end;
+}
+
+.normal-card-text {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(118, 124, 130);
+    transition: .3s color cubic-bezier(.4, 0, .2, 1);
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .gift-card-code-btn {

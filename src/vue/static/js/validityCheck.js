@@ -95,3 +95,8 @@ function isValidPassword(inputPassword) {
     const hasNumber = /[0-9]/.test(inputPassword);    // 检查是否包含数字
     return hasLetter && hasNumber;
 }
+
+export function isGiftCardCodeValid(giftCardCode) {
+    const regex = /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/;
+    return regex.test(giftCardCode);
+}

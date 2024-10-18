@@ -56,6 +56,10 @@ export default {
 function checkIsNeedToLogin(to: string, router: Router) {
     const needCheckRoutes = [
         '/garage/overview',
+        '/garage/function/carModification',
+        '/garage/function/inventory',
+        '/garage/function/lottery',
+        '/garage/function/shop',
     ]
 
     if (needCheckRoutes.includes(to)) {
@@ -67,11 +71,12 @@ function checkIsNeedToLogin(to: string, router: Router) {
                 "position": "top-center",
                 "autoClose": 1500,
                 "dangerouslyHTMLString": true
-            }) */
+            }) 
             // 等待2秒
             setTimeout(() => {
                 router.go('/garage/login');
-            }, 1500);
+            }, 1500); */
+            router.go('/garage/login');
             return false;
         } else {
             return true;
