@@ -90,7 +90,7 @@ export function isValidUserName(inputUserName) {
     return regex.test(inputUserName);
 }
 
-function isValidPassword(inputPassword) {
+export function isValidPassword(inputPassword) {
     const hasLetter = /[a-zA-Z]/.test(inputPassword); // 检查是否包含英文字母
     const hasNumber = /[0-9]/.test(inputPassword);    // 检查是否包含数字
     return hasLetter && hasNumber;

@@ -351,8 +351,8 @@ export default {
         resetPassword() {
             document.getElementById('resetBtnModalBtn').setAttribute("disabled", "disabled");
             document.getElementById('resetBtnModalBtnSpinner').hidden = false;
-            let isInputValid = validityCheck.resetPasswordValidityCheck(this.originalPassword, this.newPassword);
-            if (!isInputValid.checkStatus) {
+            let isInputValid = validityCheck.isValidPassword(this.newPassword);
+            if (!isInputValid) {
                 toast(isInputValid.message, {
                     "theme": "colored",
                     "type": "error",
