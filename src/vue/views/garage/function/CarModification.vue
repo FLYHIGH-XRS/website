@@ -5,7 +5,7 @@
             <div class="form-floating">
                 <select class="form-select" id="floatingSelectGrid_CarSelect" v-model="selectedCarId"
                     @change="getCarInfo()">
-                    <option selected disabled>请选择车辆</option>
+                    <option value="0" selected disabled>请选择车辆</option>
                     <option v-for="car in carList" :value="car.carId" :key="car.carId">{{ car.carNameInfo }}</option>
                 </select>
                 <label for="floatingSelectGrid_CarSelect">车辆选择</label>
@@ -48,7 +48,7 @@
                             <div class="form-floating mb-2">
                                 <select class="form-select" id="floatingSelect_CarLevel"
                                     aria-label="Floating label select" v-model="input_CarLevel" disabled>
-                                    <option selected disabled>请选择车辆等级</option>
+                                    <option value="0" selected disabled>请选择车辆等级</option>
                                     <option v-for="level in carData.carLevels" :value="level.value" :key="level.value">
                                         {{ level.label }}</option>
                                 </select>
@@ -97,7 +97,7 @@
                     <div class="form-floating mb-2">
                         <select class="form-select" id="floatingSelect_CarRegionId" aria-label="Floating label select"
                             v-model="input_CarRegionId" disabled>
-                            <option selected disabled>请选择车辆注册地区</option>
+                            <option value="0" selected disabled>请选择车辆注册地区</option>
                             <option v-for="region in carData.carRegionIds" :value="region.value" :key="region.value">{{
                                 region.label }}</option>
                         </select>
@@ -122,7 +122,7 @@
                     <div class="form-floating mb-2">
                         <select class="form-select" id="floatingSelect_CarStoryClearCount"
                             aria-label="Floating label select" v-model="input_CarStNumber" disabled>
-                            <option selected disabled>请选择故事集数</option>
+                            <option value="0" selected disabled>请选择故事集数</option>
                             <option v-for="st in carData.stNumbers" :value="st.value" :key="st.value">{{ st.label }}
                             </option>
                         </select>
@@ -168,10 +168,10 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-primary w-100 mb-1" id="getFullCarColorBtn"
                         disabled>获取全车检色</button>
-                    <p class="form-text" style="line-height: normal; margin-bottom: 5px;">
+                    <p class="form-text" style="line-height: normal; margin-bottom: 5px; color: rgba(33, 37, 41, 0.75);">
                         若该按钮不可用，则代表您的车已获取了全车检色或者该车辆不允许获取全车检色。</p>
                     <button type="button" class="btn btn-danger w-100 mb-1" id="deleteCarBtn" disabled>删除车辆</button>
-                    <p class="form-text" style="line-height: normal; margin-bottom: 5px;">车辆会从您的游戏账户中移出。移出后不可进行还原，请谨慎操作！
+                    <p class="form-text" style="line-height: normal; margin-bottom: 5px; color: rgba(33, 37, 41, 0.75);">车辆会从您的游戏账户中移出。移出后不可进行还原，请谨慎操作！
                     </p>
                 </div>
             </div>
@@ -198,20 +198,20 @@ export default {
             },
             // 信息
             carList: null, // 车辆列表
-            selectedCarId: null, // 正在选择的车辆ID
+            selectedCarId: 0, // 正在选择的车辆ID
             isFullCustomColor: null, // 是否已经全车检色
             // 基础修改
             input_CarName: null, // 名称
-            input_CarLevel: null, // 等级
+            input_CarLevel: 0, // 等级
             input_CarTitle: null, // 称号
             input_CarOdoMeter: null, // 公里数
             input_CarRgTrophy: null, // 化身奖杯数
             input_CarPlateNumber: null, // 车牌号
-            input_CarRegionId: null, // 车辆注册地区
+            input_CarRegionId: 0, // 车辆注册地区
             // 故事修改
-            input_CarStNumber: null, // 集数
+            input_CarStNumber: 0, // 集数
             // 高级修改
-            input_CarWheel: null,
+            input_CarWheel: 0,
             // 用户数据
             userInfo: {
                 accessCode: null,
@@ -272,15 +272,41 @@ export default {
         },
         refetchCarList() {
             this.input_CarName = null; // 名称
-            this.input_CarLevel = null; // 等级
+            this.input_CarLevel = 0; // 等级
             this.input_CarTitle = null; // 称号
             this.input_CarOdoMeter = null; // 公里数
             this.input_CarRgTrophy = null; // 化身奖杯数
             this.input_CarPlateNumber = null; // 车牌号
-            this.input_CarRegionId = null; // 车辆注册地区
-            this.input_CarStNumber = null; // 集数
-            this.input_CarWheel = null; // 轮毂
+            this.input_CarRegionId = 0; // 车辆注册地区
+            this.input_CarStNumber = 0; // 集数
+            this.input_CarWheel = 0; // 轮毂
             this.isFullCustomColor = null; // 是否已经全车检色
+            this.selectedCarId = 0; // 正在选择的车辆ID
+            const Ids = [
+                'floatingSelectGrid_CarSelect',
+                'refetchCarListBtn',
+                // 基础修改
+                'floatingInput_CarName',
+                'floatingSelect_CarLevel',
+                'floatingInput_CarTitle',
+                'floatingInput_CarOdoMeter',
+                'floatingInput_CarRgTrophy',
+                'floatingInput_CarPlateNumber',
+                'floatingSelect_CarRegionId',
+                'basicUpdateBtn',
+                // 故事修改
+                'floatingSelect_CarStoryClearCount',
+                'storyUpdateBtn',
+                // 高级修改
+                'floatingSelect_CarWheel',
+                'seniorUpdateBtn',
+                // 其他
+                'getFullCarColorBtn',
+                'deleteCarBtn'
+            ]
+            for (let i = 0; i < Ids.length; i++) {
+                document.getElementById(Ids[i]).setAttribute('disabled', 'disabled');
+            }
             // 获取车辆列表
             this.getCarList();
         },
@@ -311,20 +337,19 @@ export default {
                 document.getElementById(Ids[i]).setAttribute('disabled', 'disabled');
             }
             this.input_CarName = null; // 名称
-            this.input_CarLevel = null; // 等级
+            this.input_CarLevel = 0; // 等级
             this.input_CarTitle = null; // 称号
             this.input_CarOdoMeter = null; // 公里数
             this.input_CarRgTrophy = null; // 化身奖杯数
             this.input_CarPlateNumber = null; // 车牌号
-            this.input_CarRegionId = null; // 车辆注册地区
-            this.input_CarStNumber = null; // 集数
-            this.input_CarWheel = null; // 轮毂
+            this.input_CarRegionId = 0; // 车辆注册地区
+            this.input_CarStNumber = 0; // 集数
+            this.input_CarWheel = 0; // 轮毂
             this.isFullCustomColor = null; // 是否已经全车检色
             axios.post('/api/getCarInfo', {
                 carId: this.selectedCarId
             }).then((response) => {
                 if (response.data.fetchStatus) {
-                    console.log(response.data);
                     this.input_CarName = response.data.car.name; // 名称
                     this.input_CarLevel = response.data.car.level; // 等级
                     this.input_CarTitle = response.data.car.title; // 称号
