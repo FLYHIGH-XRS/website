@@ -71,6 +71,7 @@ export default {
             document.getElementById("loginBtnSpinner").hidden = false;
             // 加密密码
             let encryptedPassword = encrypt.encryptPassword(this.inputPassword);
+            console.log(encryptedPassword);
             // 发送请求
             axios.post('/api/login', {
                 userQQ: this.inputQQNumber,

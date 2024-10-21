@@ -14,7 +14,8 @@
         <div class="col-12 col-md-3">
             <button type="button" class="btn btn-primary w-100 h-100" style="white-space: nowrap;"
                 id="refetchCarListBtn" @click="refetchCarList()">
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="refetchCarListBtnSpinner" hidden></span>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                    id="refetchCarListBtnSpinner" hidden></span>
                 重新获取
             </button>
         </div>
@@ -103,7 +104,12 @@
                         </select>
                         <label for="floatingSelect_CarRegionId">车辆注册地区</label>
                     </div>
-                    <button type="button" class="btn btn-success" id="basicUpdateBtn" disabled>提交修改</button>
+                    <button type="button" class="btn btn-success" id="basicUpdateBtn" @click="updateCarData('Basic')"
+                        disabled>
+                        <span class="spinner-border spinner-border-sm" id="basicUpdateBtnSpinner" role="status"
+                            aria-hidden="true" hidden></span>
+                        提交修改
+                    </button>
                 </div>
             </div>
         </div>
@@ -128,7 +134,12 @@
                         </select>
                         <label for="floatingSelect_CarStoryClearCount">选择故事集数</label>
                     </div>
-                    <button type="button" class="btn btn-success" id="storyUpdateBtn" disabled>提交修改</button>
+                    <button type="button" class="btn btn-success" id="storyUpdateBtn" @click="updateCarData('Story')"
+                        disabled>
+                        <span class="spinner-border spinner-border-sm" id="storyUpdateBtnSpinner" role="status"
+                            aria-hidden="true" hidden></span>
+                        提交修改
+                    </button>
                     <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px;">⚠️ 使用前注意</h6>
                     <ul style="list-style-type: decimal; margin-top: -5px;">
                         <li class="card-text ct-vp-fix">故事修改只允许修改至每周目的最后一集。</li>
@@ -155,7 +166,12 @@
                         </select>
                         <label for="floatingSelect_CarWheel">轮毂选择</label>
                     </div>
-                    <button type="button" class="btn btn-success" id="seniorUpdateBtn" disabled>提交修改</button>
+                    <button type="button" class="btn btn-success" id="seniorUpdateBtn" @click="updateCarData('Senior')"
+                        disabled>
+                        <span class="spinner-border spinner-border-sm" id="seniorUpdateBtnSpinner" role="status"
+                            aria-hidden="true" hidden></span>
+                        提交修改
+                    </button>
                 </div>
             </div>
         </div>
@@ -166,12 +182,22 @@
                     其他
                 </div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-primary w-100 mb-1" id="getFullCarColorBtn"
-                        disabled>获取全车检色</button>
-                    <p class="form-text" style="line-height: normal; margin-bottom: 5px; color: rgba(33, 37, 41, 0.75);">
+                    <button type="button" class="btn btn-primary w-100 mb-1" id="getFullCarColorBtn" @click="getFullCarColor()" disabled>
+                        <span class="spinner-border spinner-border-sm" id="getFullCarColorBtnSpinner" role="status"
+                            aria-hidden="true" hidden></span>
+                        获取全车检色
+                    </button>
+                    <p class="form-text"
+                        style="line-height: normal; margin-bottom: 5px; color: rgba(33, 37, 41, 0.75);">
                         若该按钮不可用，则代表您的车已获取了全车检色或者该车辆不允许获取全车检色。</p>
-                    <button type="button" class="btn btn-danger w-100 mb-1" id="deleteCarBtn" disabled>删除车辆</button>
-                    <p class="form-text" style="line-height: normal; margin-bottom: 5px; color: rgba(33, 37, 41, 0.75);">车辆会从您的游戏账户中移出。移出后不可进行还原，请谨慎操作！
+                    <button type="button" class="btn btn-danger w-100 mb-1" id="deleteCarBtn" @click="deleteCar()" disabled>
+                        <span class="spinner-border spinner-border-sm" id="deleteCarBtnSpinner" role="status"
+                            aria-hidden="true" hidden></span>
+                        移除车辆
+                    </button>
+                    <p class="form-text"
+                        style="line-height: normal; margin-bottom: 5px; color: rgba(33, 37, 41, 0.75);">
+                        车辆会从您的游戏账户中移出。移出后非特殊原因，不可进行还原！请谨慎操作！<br>需注意：车辆仅为从您的卡中移出，并不代表直接从您的卡中删除。
                     </p>
                 </div>
             </div>
@@ -387,6 +413,255 @@ export default {
                     document.getElementById(dIds[i]).removeAttribute('disabled');
                 }
             })
+        },
+        updateCarData(type) {
+            const Ids = [
+                'floatingSelectGrid_CarSelect',
+                'refetchCarListBtn',
+                // 基础修改
+                'floatingInput_CarName',
+                'floatingSelect_CarLevel',
+                'floatingInput_CarTitle',
+                'floatingInput_CarOdoMeter',
+                'floatingInput_CarRgTrophy',
+                'floatingInput_CarPlateNumber',
+                'floatingSelect_CarRegionId',
+                'basicUpdateBtn',
+                // 故事修改
+                'floatingSelect_CarStoryClearCount',
+                'storyUpdateBtn',
+                // 高级修改
+                'floatingSelect_CarWheel',
+                'seniorUpdateBtn',
+                // 其他
+                'getFullCarColorBtn',
+                'deleteCarBtn'
+            ]
+            for (let i = 0; i < Ids.length; i++) {
+                document.getElementById(Ids[i]).setAttribute('disabled', 'disabled');
+            }
+            if (type === 'Basic') {
+                document.getElementById('basicUpdateBtnSpinner').hidden = false;
+            } else if (type === 'Story') {
+                document.getElementById('storyUpdateBtnSpinner').hidden = false;
+            } else if (type === 'Senior') {
+                document.getElementById('seniorUpdateBtnSpinner').hidden = false;
+            }
+            axios.post('/api/modifyUpdate', {
+                type: type,
+                carId: this.selectedCarId,
+                name: this.input_CarName,
+                level: this.input_CarLevel,
+                title: this.input_CarTitle,
+                odometer: this.input_CarOdoMeter,
+                rgTrophy: this.input_CarRgTrophy,
+                plateNumber: this.input_CarPlateNumber,
+                regionId: this.input_CarRegionId,
+                wheel: this.input_CarWheel,
+                stClearCount: this.input_CarStNumber,
+                operateUserQQ: this.userInfo.userInfo.userQQ,
+                userPassword: this.userInfo.userInfo.userPassword
+            }, {
+                timeout: 10000 // 10s
+            }).then((response) => {
+                if (response.data.fetchStatus === true) {
+                    toast("修改车辆信息成功！", {
+                        "theme": "colored",
+                        "type": "success",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    })
+                } else {
+                    toast("修改车辆信息失败：\n" + response.data.message, {
+                        "theme": "colored",
+                        "type": "error",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    })
+                }
+            }).catch((error) => {
+                console.log(error);
+                toast("修改车辆信息失败\n问题：\n" + error, {
+                    "theme": "colored",
+                    "type": "error",
+                    "position": "top-center",
+                    "autoClose": 2000,
+                    "dangerouslyHTMLString": true
+                })
+            }).finally(() => {
+                for (let i = 0; i < Ids.length; i++) {
+                    document.getElementById(Ids[i]).removeAttribute('disabled');
+                }
+                // 清理所有数据
+                this.input_CarName = null; // 名称
+                this.input_CarLevel = 0; // 等级
+                this.input_CarTitle = null; // 称号
+                this.input_CarOdoMeter = null; // 公里数
+                this.input_CarRgTrophy = null; // 化身奖杯数
+                this.input_CarPlateNumber = null; // 车牌号
+                this.input_CarRegionId = 0; // 车辆注册地区
+                this.input_CarStNumber = 0; // 集数
+                this.input_CarWheel = 0; // 轮毂
+                this.isFullCustomColor = null; // 是否已经全车检色
+                // 重新获取车辆信息
+                this.getCarInfo();
+                // 隐藏按钮旋转提示
+                if (type === 'Basic') {
+                    document.getElementById('basicUpdateBtnSpinner').hidden = true;
+                } else if (type === 'Story') {
+                    document.getElementById('storyUpdateBtnSpinner').hidden = true;
+                } else if (type === 'Senior') {
+                    document.getElementById('seniorUpdateBtnSpinner').hidden = true;
+                }
+            });
+        },
+        getAllCustomColor() {
+            const Ids = [
+                'floatingSelectGrid_CarSelect',
+                'refetchCarListBtn',
+                // 基础修改
+                'floatingInput_CarName',
+                'floatingSelect_CarLevel',
+                'floatingInput_CarTitle',
+                'floatingInput_CarOdoMeter',
+                'floatingInput_CarRgTrophy',
+                'floatingInput_CarPlateNumber',
+                'floatingSelect_CarRegionId',
+                'basicUpdateBtn',
+                // 故事修改
+                'floatingSelect_CarStoryClearCount',
+                'storyUpdateBtn',
+                // 高级修改
+                'floatingSelect_CarWheel',
+                'seniorUpdateBtn',
+                // 其他
+                'getFullCarColorBtn',
+                'deleteCarBtn'
+            ]
+            for (let i = 0; i < Ids.length; i++) {
+                document.getElementById(Ids[i]).setAttribute('disabled', 'disabled');
+            }
+            document.getElementById('getFullCarColorBtnSpinner').hidden = false;
+            axios.post('/api/giveFullCustomColor', {
+                carId: this.selectedCarId,
+                operateUserQQ: this.userInfo.userInfo.userQQ,
+                userPassword: this.userInfo.userInfo.userPassword
+            }, {
+                timeout: 10000 // 10s
+            }).then((response) => {
+                if (response.data.giveStatus === true) {
+                    toast("获取满车检色成功！\n请前往游戏终端机\n在您的车辆改装处即可更换车检色！", {
+                        "theme": "colored",
+                        "type": "success",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    })
+                } else {
+                    toast("获取满车检色失败：\n" + response.data.message, {
+                        "theme": "colored",
+                        "type": "error",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    })
+                }
+            }).catch((error) => {
+                console.log(error);
+                toast("获取满车检色失败\n问题：\n" + error, {
+                    "theme": "colored",
+                    "type": "error",
+                    "position": "top-center",
+                    "autoClose": 2000,
+                    "dangerouslyHTMLString": true
+                })
+            }).finally(() => {
+                for (let i = 0; i < Ids.length; i++) {
+                    document.getElementById(Ids[i]).removeAttribute('disabled');
+                }
+                document.getElementById('getFullCarColorBtnSpinner').hidden = true;
+            });
+        },
+        deleteCar() {
+            const Ids = [
+                'floatingSelectGrid_CarSelect',
+                'refetchCarListBtn',
+                // 基础修改
+                'floatingInput_CarName',
+                'floatingSelect_CarLevel',
+                'floatingInput_CarTitle',
+                'floatingInput_CarOdoMeter',
+                'floatingInput_CarRgTrophy',
+                'floatingInput_CarPlateNumber',
+                'floatingSelect_CarRegionId',
+                'basicUpdateBtn',
+                // 故事修改
+                'floatingSelect_CarStoryClearCount',
+                'storyUpdateBtn',
+                // 高级修改
+                'floatingSelect_CarWheel',
+                'seniorUpdateBtn',
+                // 其他
+                'getFullCarColorBtn',
+                'deleteCarBtn'
+            ]
+            for (let i = 0; i < Ids.length; i++) {
+                document.getElementById(Ids[i]).setAttribute('disabled', 'disabled');
+            }
+            document.getElementById('deleteCarBtnSpinner').hidden = false;
+            axios.post('/api/deleteCarFromUser', {
+                carId: this.selectedCarId,
+                operateUserQQ: this.userInfo.userInfo.userQQ,
+                userPassword: this.userInfo.userInfo.userPassword
+            }, {
+                timeout: 10000 // 10s
+            }).then(response => {
+                if (response.data.deleteStatus === true) {
+                    toast("移出成功！", {
+                        "theme": "colored",
+                        "type": "success",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    })
+                } else {
+                    toast("移出失败：\n" + response.data.message, {
+                        "theme": "colored",
+                        "type": "error",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    })
+                }
+            }).catch(error => {
+                console.log(error);
+                toast("移出失败\n问题：\n" + error, {
+                    "theme": "colored",
+                    "type": "error",
+                    "position": "top-center",
+                    "autoClose": 2000,
+                    "dangerouslyHTMLString": true
+                })
+            }).finally(() => {
+                document.getElementById('deleteCarBtnSpinner').hidden = true;
+                // 清理所有数据
+                this.input_CarName = null; // 名称
+                this.input_CarLevel = 0; // 等级
+                this.input_CarTitle = null; // 称号
+                this.input_CarOdoMeter = null; // 公里数
+                this.input_CarRgTrophy = null; // 化身奖杯数
+                this.input_CarPlateNumber = null; // 车牌号
+                this.input_CarRegionId = 0; // 车辆注册地区
+                this.input_CarStNumber = 0; // 集数
+                this.input_CarWheel = 0; // 轮毂
+                this.isFullCustomColor = null; // 是否已经全车检色
+                // 取消车辆选择
+                this.selectedCarId = 0;
+                // 刷新车辆列表
+                this.getCarList();
+            });
         }
     },
     mounted() {
@@ -397,6 +672,25 @@ export default {
             this.userInfo = JSON.parse(userInfo);
         }
         this.getCarList();
+    },
+    watch: {
+        'input_CarStNumber': function (new_input_CarStNumber) {
+            const options = document.getElementById('floatingSelect_CarStoryClearCount').options;
+            for (let i = 0; i < options.length; i++) {
+                const optionValue = parseInt(options[i].value, 10);
+                if (optionValue > new_input_CarStNumber) {
+                    options[i].removeAttribute('disabled');
+                } else {
+                    options[i].setAttribute('disabled', 'disabled');
+                }
+                if (optionValue > new_input_CarStNumber) {
+                    for (let j = i + 1; j < options.length; j++) {
+                        options[j].setAttribute('disabled', 'disabled');
+                    }
+                    break;
+                }
+            }
+        }
     }
 }
 </script>
