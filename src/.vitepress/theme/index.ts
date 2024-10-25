@@ -2,7 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.css'
 
 // https://vitepress.dev/guide/custom-theme
-import { h, watch } from 'vue'
+import { h, nextTick, watch } from 'vue'
 import { useRouter, type Route, type Router, type Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
@@ -18,6 +18,18 @@ import "vue3-toastify/dist/index.css";
 
 // 时间线
 import "vitepress-markdown-timeline/dist/theme/index.css";
+
+// Progress Bar
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+NProgress.configure({
+    easing: 'ease', // 动画方式
+    speed: 500, // 递增进度条的速度
+    showSpinner: false, // 是否显示加载ico
+    trickleSpeed: 200, // 自动递增间隔
+    minimum: 0.3 // 初始化时的最小百分比
+})
 
 import { setupThemeSwitcher } from './themeSwitcher';
 
@@ -47,6 +59,16 @@ export default {
 
         app.config.globalProperties.$jump = (url: string) => {
             router.go(url);
+        }
+
+        if (typeof window !== 'undefined') {
+            router.onBeforePageLoad = () => {
+                NProgress.start();
+            };
+        
+            router.onAfterPageLoad = () => {
+                NProgress.done();
+            };
         }
     },
 
