@@ -258,6 +258,7 @@ export default {
                     xrCredit: null,
                 }
             },
+            checkTimeOutIntervalId: null // 检查超时定时器
         }
     },
     methods: {
@@ -662,7 +663,31 @@ export default {
                 // 刷新车辆列表
                 this.getCarList();
             });
-        }
+        },
+        checkTimeExpired() {
+            let now = Math.floor(new Date().getTime() / 1000);
+            let lastLoginAt = this.userInfo.userInfo.lastLoginAt;
+            let userIsLogin = sessionStorage.getItem('UserInfo');
+            if (now - lastLoginAt > 600) {
+                if (!userIsLogin) {
+                    return;
+                } else {
+                    console.log("登录已过期！请重新登录！");
+                    toast("登录已过期！请重新登录！", {
+                        "theme": "colored",
+                        "type": "error",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    })
+                    sessionStorage.removeItem('UserInfo');
+                    setTimeout(() => {
+                        clearInterval(this.checkTimeOutIntervalId);
+                        window.location.href = '/garage/login'; // 避免触发bug，使用window.location.href
+                    }, 2000)
+                }
+            }
+        },
     },
     mounted() {
         const userInfo = sessionStorage.getItem("UserInfo");
@@ -672,6 +697,9 @@ export default {
             this.userInfo = JSON.parse(userInfo);
         }
         this.getCarList();
+        this.checkTimeOutIntervalId = setInterval(() => {
+            this.checkTimeExpired();
+        }, 2000);
     },
     watch: {
         'input_CarStNumber': function (new_input_CarStNumber) {

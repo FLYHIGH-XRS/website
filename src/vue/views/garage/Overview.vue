@@ -1,5 +1,5 @@
 <template>
-    <div class="row g-3" style="margin-top: 0;">
+    <div class="row g-2" style="margin-top: 0;">
         <div class="col-12 col-md-8">
             <div class="card h-100">
                 <div class="card-body">
@@ -75,7 +75,7 @@
                             </button>
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-success" style="width: 100%;"
+                            <button type="button" class="btn btn-success w-100"
                                 @click="generateCardFile()">下载卡文件</button>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
             </div>
         </div>
         <div class="col-12 col-md-5">
-            <div class="card h-100">
+            <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">兑换礼品卡</h5>
                     <div class="mb-2">
@@ -128,8 +128,12 @@
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">站点公告</h5>
-                    <p class="normal-card-text">1. 本新站点正处于Beta阶段，如遇意外问题，请带上截图和触发问题的操作联系群主。</p>
-                    <p class="normal-card-text">2. 若因站点问题导致用户数据丢失，请联系群主，我们会给予一定补偿。</p>
+                    <ul style="list-style-type: decimal;">
+                        <li class="card-text ct-vp-fix">本新站点正处于Beta阶段，如遇意外问题，请带上截图和触发问题的操作联系群主。</li>
+                        <li class="card-text ct-vp-fix">若因站点问题导致用户数据丢失，请联系群主，我们会给予一定补偿。</li>
+                        <li class="card-text ct-vp-fix">登入有效期为10分钟，超时将自动登出。</li>
+                        <li class="card-text ct-vp-fix">为保证您的Bana Passport卡号不被泄露，请勿在直播期间点击本页面中Bana Passport处的的“查看卡信息”按钮！</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -253,7 +257,8 @@ export default {
             // 用户名更改
             newUserName: null,
             // 兑换礼品卡
-            code: null
+            code: null,
+            checkTimeOutIntervalId: null // 检查超时定时器
         }
     },
     methods: {
@@ -519,7 +524,31 @@ export default {
                     document.getElementById('exchange600ToFTTBtn').removeAttribute("disabled");
                     document.getElementById('exchange600ToFTTBtnSpinner').hidden = true;
                 });
-        }
+        },
+        checkTimeExpired() {
+            let now = Math.floor(new Date().getTime() / 1000);
+            let lastLoginAt = this.userInfo.userInfo.lastLoginAt;
+            let userIsLogin = sessionStorage.getItem('UserInfo');
+            if (now - lastLoginAt > 600) {
+                if (!userIsLogin) {
+                    return;
+                } else {
+                    console.log("登录已过期！请重新登录！");
+                    toast("登录已过期！请重新登录！", {
+                        "theme": "colored",
+                        "type": "error",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    })
+                    sessionStorage.removeItem('UserInfo');
+                    setTimeout(() => {
+                        clearInterval(this.checkTimeOutIntervalId);
+                        window.location.href = '/garage/login'; // 避免触发bug，使用window.location.href
+                    }, 2000)
+                }
+            }
+        },
     },
     mounted() {
         const userInfo = sessionStorage.getItem("UserInfo");
@@ -529,7 +558,6 @@ export default {
             this.userInfo = JSON.parse(userInfo);
             this.lastLoginAtText = new Date(this.userInfo.userInfo.lastLoginAt * 1000).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai", hour12: false });
         }
-
         // 每日第一次登录欢迎弹窗
         if (!this.userInfo.isTodayLogin) {
             if (typeof window !== 'undefined') {
@@ -545,11 +573,13 @@ export default {
             userInfo.isTodayLogin = true;
             sessionStorage.setItem('UserInfo', JSON.stringify(userInfo));
         }
-
         // 如果不足数量兑换满改券则禁用兑换按钮
         if (this.userInfo.ticket600HpNumber < 5) {
             document.getElementById('exchange600ToFTTBtn').setAttribute("disabled", "disabled");
         }
+        this.checkTimeOutIntervalId = setInterval(() => {
+            this.checkTimeExpired();
+        }, 2000);
     }
 }
 </script>
@@ -609,5 +639,11 @@ export default {
     .gift-card-code-btn {
         width: 100%;
     }
+}
+
+.ct-vp-fix {
+    margin: 0 !important;
+    line-height: normal !important;
+    font-size: 14px;
 }
 </style>
