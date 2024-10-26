@@ -177,6 +177,11 @@ export default {
                 document.getElementById("registerBtnSpinner").hidden = true;
             });
         },
+    },
+    mounted() {
+        if (sessionStorage.getItem("UserInfo")) {
+            this.$jump('/garage/overview');
+        }
     }
 }
 </script>

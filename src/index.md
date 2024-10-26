@@ -15,7 +15,7 @@ hero:
       link: /events/latest
     - theme: alt
       text: 车库
-      link: /garage/
+      link: /garage/login
     - theme: alt
       text: 排行榜
       link: /ranking/timeAttack

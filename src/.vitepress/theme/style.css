@@ -144,3 +144,7 @@ table td {
   /* 文字不换行 */
   width: 1%;
 }
+
+.nav {
+  display: block !important;
+}
