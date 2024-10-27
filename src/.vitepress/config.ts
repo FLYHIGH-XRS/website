@@ -7,6 +7,7 @@ import { sidebar } from './sidebar';
 import timeline from "vitepress-markdown-timeline";
 
 export default defineConfig({
+    base: '/website/',
     lang: 'zh-CN',
     title: "FLYHIGH XRS",
     description: "Xenon Racing Server",

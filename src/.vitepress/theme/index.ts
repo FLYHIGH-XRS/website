@@ -1,12 +1,6 @@
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.css'
 
-// https://vitepress.dev/guide/custom-theme
-import { h, nextTick, watch } from 'vue'
-import { useRouter, type Route, type Router, type Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import './style.css'
-
 // Axios
 import axios from 'axios'
 // @ts-ignore 不加老是报错
@@ -22,6 +16,12 @@ import "vitepress-markdown-timeline/dist/theme/index.css";
 // Progress Bar
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+
+// https://vitepress.dev/guide/custom-theme
+import { h, nextTick, watch } from 'vue'
+import { useRouter, type Route, type Router, type Theme } from 'vitepress'
+import DefaultTheme from 'vitepress/theme'
+import './style.css'
 
 NProgress.configure({
     easing: 'ease', // 动画方式
