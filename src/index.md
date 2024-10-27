@@ -35,5 +35,5 @@ features:
     title: 车库
     details: 进入您的车库以查看更多有关您的账户信息！
     linkText: 前往
-    link: /garage/
+    link: /garage/overview
 ---
