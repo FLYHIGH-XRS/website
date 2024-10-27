@@ -1,5 +1,5 @@
 // Bootstrap
-import 'bootstrap/dist/css/bootstrap.css'
+/* import 'bootstrap/dist/css/bootstrap.css' */
 
 // Axios
 import axios from 'axios'
