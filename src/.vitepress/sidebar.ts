@@ -56,7 +56,7 @@ export const sidebar = {
         {
             text: '信息',
             items: [
-                { text: 'Bingo奖品', link: '/game/bingoPrize' },
+                { text: '每日奖品', link: '/game/dailyPrize' },
                 { text: '可用店铺', link: '/game/netId' },
             ]
         }
