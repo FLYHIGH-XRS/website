@@ -1,7 +1,7 @@
 <template>
     <div id="daily_customFrame">
-        <img class="customFramePic" :src="getCustomFramePic(this.todayFrame)" :alt="this.todayFrame">
-        <h2 class="frameTitle">{{ this.todayFrame }}</h2>
+        <img class="customFramePic" :src="getCustomFramePic(todayFrame)" :alt="todayFrame">
+        <h2 class="frameTitle">{{ todayFrame }}</h2>
     </div>
 </template>
 

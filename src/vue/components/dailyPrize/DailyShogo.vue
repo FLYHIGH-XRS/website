@@ -2,7 +2,7 @@
     <div id="daily_title">
         <p class="syougou">
             <span id="syougou">
-                {{ this.todayShogo }}
+                {{ todayShogo }}
             </span>
         </p>
     </div>
