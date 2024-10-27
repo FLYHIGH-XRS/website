@@ -37,6 +37,7 @@ export default {
     background-size: 100% 100%;
     position: relative;
     font-weight: bold;
+    color: black;
     font-family: Microsoft YaHei, 微软雅黑, SimSun, sans-serif;
 }
 
