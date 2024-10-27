@@ -59,6 +59,7 @@ XRS服务器是一个免费的服务器，从安装到游玩无需您花费任�
     （有可能一打开压缩包是直接进入到了里面的文件夹，请点击最顶上的三个点的选项，回到上一级即可看到 `W6W10JPN05` 文件夹）  
 
 ![3.1-1](https://pics-a1c.pages.dev/ng_web/game/install/3.1-1.png)  
+
 ![3.1-2](https://pics-a1c.pages.dev/ng_web/game/install/3.1-2.png)  
 
 3. 等待解压完毕即可进行下一步操作  
@@ -77,7 +78,9 @@ XRS服务器是一个免费的服务器，从安装到游玩无需您花费任�
 ::: tip 前提
 在进行本步骤之前，请确保您已按照**解压游戏本体与设置包**步骤教程所示执行  
 然后，请您打开 `W6W` 文件夹。您应当看到如图所示的文件和目录（示例）  
+
 ![4.1-1](https://pics-a1c.pages.dev/ng_web/game/install/4.1-1.png)  
+
 然后，请您打开里面的 `运行库` 文件夹，并进行下一步操作  
 :::
 
@@ -119,17 +122,25 @@ XRS服务器是一个免费的服务器，从安装到游玩无需您花费任�
 
 1. 在 `W6W` 文件夹内，找到 `[TPUI] 启动鹦鹉模拟器` ，双击打开  
 2. 点击游戏设置  
+
 ![6.1-1](https://pics-a1c.pages.dev/ng_web/game/install/6.1-1.png)  
+
 3. 对照下图，填写您的游戏信息  
 ::: tip 提示
 如果您不知道您的网卡的IPv4地址，请在群文件的 `工具` 文件夹里面，下载 `获取当前网络地址.exe`  
 双击打开就可以知道您当前的网卡的IPv4地址了  
+
 ![6.1-2](https://pics-a1c.pages.dev/ng_web/game/install/6.1-2.png)  
+
 如果这个方法不行，那建议您参考以下文献：[CSDN](https://blog.csdn.net/m0_73514785/article/details/136064059)  
 :::
+
 ![6.1-3](https://pics-a1c.pages.dev/ng_web/game/install/6.1-3.png)  
+
 4. 点击控制设置  
+
 ![6.1-4](https://pics-a1c.pages.dev/ng_web/game/install/6.1-4.png)  
+
 5. 对照以下提供表格解释，**自行输入您想要的按键**即可  
 
 | **在软件内的显示**               | **功能说明**                         | **是否必须设置？**    |
@@ -162,9 +173,13 @@ XRS服务器是一个免费的服务器，从安装到游玩无需您花费任�
 
 每次启动游戏都需要走以下步骤：  
 1. 启动虚拟终端机  
+
 ![7.1-1](https://pics-a1c.pages.dev/ng_web/game/install/7.1-1.png)  
+
 2. 使用TPUI模拟器启动游戏  
+
 ![7.1-2](https://pics-a1c.pages.dev/ng_web/game/install/7.1-2.png)  
+
 ![7.1-3](https://pics-a1c.pages.dev/ng_web/game/install/7.1-3.png)  
 
 ## 8. 新卡发行
@@ -196,7 +211,9 @@ XRS服务器是一个免费的服务器，从安装到游玩无需您花费任�
 然后将其放置到游戏根目录，并覆盖  
 
 ![8.3-1](https://pics-a1c.pages.dev/ng_web/game/install/8.3-1.png)  
+
 ![8.3-2](https://pics-a1c.pages.dev/ng_web/game/install/8.3-2.png)  
+
 ![8.3-3](https://pics-a1c.pages.dev/ng_web/game/install/8.3-3.png)  
 
 #### 8.4 启动游戏

@@ -13,7 +13,8 @@ export const navbar = [
             {
                 text: '信息',
                 items: [
-                    { text: 'Bingo奖品', link: '/game/bingoPrize' }
+                    { text: 'Bingo奖品', link: '/game/bingoPrize' },
+                    { text: '可用店铺', link: '/game/netId' },
                 ]
             },
         ]
