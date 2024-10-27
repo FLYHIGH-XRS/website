@@ -9,7 +9,8 @@
     <ClientOnly>
         <div class="d-grid gap-4 d-md-flex justify-content-md-end">
             <!-- 单抽 -->
-            <button type="button" class="btn btn-success position-relative" id="draw1Time_btn" @click="draw(1)" disabled>
+            <button type="button" class="btn btn-success position-relative" id="draw1Time_btn" @click="draw(1)"
+                disabled>
                 抽 1 次
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                     v-if="userInfo">
@@ -19,7 +20,8 @@
                     hidden></span>
             </button>
             <!-- 10连 -->
-            <button type="button" class="btn btn-success position-relative" id="draw10Times_btn" @click="draw(10)" disabled>
+            <button type="button" class="btn btn-success position-relative" id="draw10Times_btn" @click="draw(10)"
+                disabled>
                 抽 10 次
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                     v-if="userInfo">
@@ -414,15 +416,21 @@ export default {
                     // 更新进度条百分比
                     this.progressPercentage = (this.userInfo.userInfo.currentDrawCount / 70) * 100;
                     if (this.userInfo.userInfo.lotteryTicket < 10) {
-                        document.getElementById('draw1Time_btn').removeAttribute('disabled');
-                        document.getElementById('draw10Times_btn').setAttribute('disabled', 'disabled');
+                        if (document.getElementById('draw1Time_btn') && document.getElementById('draw10Times_btn')) {
+                            document.getElementById('draw1Time_btn').removeAttribute('disabled', 'disabled');
+                            document.getElementById('draw10Times_btn').setAttribute('disabled', 'disabled');
+                        }
                     } else if (this.userInfo.userInfo.lotteryTicket >= 10) {
-                        document.getElementById('draw1Time_btn').removeAttribute('disabled');
-                        document.getElementById('draw10Times_btn').removeAttribute('disabled');
+                        if (document.getElementById('draw1Time_btn') && document.getElementById('draw10Times_btn')) {
+                            document.getElementById('draw1Time_btn').removeAttribute('disabled');
+                            document.getElementById('draw10Times_btn').removeAttribute('disabled');
+                        }
                     }
                     if (this.userInfo.userInfo.lotteryTicket < 1) {
-                        document.getElementById('draw1Time_btn').setAttribute('disabled', 'disabled');
-                        document.getElementById('draw10Times_btn').setAttribute('disabled', 'disabled');
+                        if (document.getElementById('draw1Time_btn') && document.getElementById('draw10Times_btn')) {
+                            document.getElementById('draw1Time_btn').setAttribute('disabled', 'disabled');
+                            document.getElementById('draw10Times_btn').setAttribute('disabled', 'disabled');
+                        }
                     }
                 } else {
                     console.error("获取抽奖券数量失败", response.data);
@@ -433,8 +441,10 @@ export default {
                         "autoClose": 2000,
                         "dangerouslyHTMLString": true
                     })
-                    document.getElementById('draw1Time_btn').setAttribute('disabled', 'disabled');
-                    document.getElementById('draw10Times_btn').setAttribute('disabled', 'disabled');
+                    if (document.getElementById('draw1Time_btn') && document.getElementById('draw10Times_btn')) {
+                        document.getElementById('draw1Time_btn').setAttribute('disabled', 'disabled');
+                        document.getElementById('draw10Times_btn').setAttribute('disabled', 'disabled');
+                    }
                 }
             }).catch(error => {
                 console.error("获取抽奖券数量失败", error);
@@ -445,8 +455,10 @@ export default {
                     "autoClose": 2000,
                     "dangerouslyHTMLString": true
                 })
-                document.getElementById('draw1Time_btn').setAttribute('disabled', 'disabled');
-                document.getElementById('draw10Times_btn').setAttribute('disabled', 'disabled');
+                if (document.getElementById('draw1Time_btn') && document.getElementById('draw10Times_btn')) {
+                    document.getElementById('draw1Time_btn').setAttribute('disabled', 'disabled');
+                    document.getElementById('draw10Times_btn').setAttribute('disabled', 'disabled');
+                }
             })
         },
         checkTimeExpired() {
