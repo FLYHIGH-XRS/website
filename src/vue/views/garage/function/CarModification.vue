@@ -212,6 +212,8 @@ import "vue3-toastify/dist/index.css";
 
 import * as carData from '../../../static/js/carModificationValues.js';
 
+import 'bootstrap/dist/css/bootstrap.css'
+
 export default {
     data() {
         return {

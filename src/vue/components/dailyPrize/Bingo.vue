@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import 'bootstrap/dist/css/bootstrap.css'
 import * as shogo from "../../static/js/shogo.js";
 
 export default {

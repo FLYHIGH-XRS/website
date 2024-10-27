@@ -146,6 +146,8 @@ import axios from 'axios';
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
+import 'bootstrap/dist/css/bootstrap.css'
+
 export default {
     data() {
         return {

@@ -132,6 +132,8 @@ import carModels from '../../static/json/cars.json';
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
+import 'bootstrap/dist/css/bootstrap.css'
+
 export default {
     data() {
         return {

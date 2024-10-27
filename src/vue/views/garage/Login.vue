@@ -45,6 +45,8 @@ import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 import * as validityCheck from "../../static/js/validityCheck";
 
+import 'bootstrap/dist/css/bootstrap.css'
+
 export default {
     data() {
         return {
