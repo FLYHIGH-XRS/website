@@ -9,8 +9,6 @@
 import * as customFrame from "../../static/js/customFrame.js";
 import customFrames from "../../static/json/customFrames.json";
 
-import 'bootstrap/dist/css/bootstrap.css'
-
 export default {
     data() {
         return {

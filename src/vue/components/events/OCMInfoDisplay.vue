@@ -53,8 +53,6 @@
 </template>
 
 <script>
-import 'bootstrap/dist/css/bootstrap.css'
-
 export default {
     props: {
         imgSrc: { type: String, required: true },

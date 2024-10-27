@@ -44,6 +44,7 @@ export default {
         // ...
         // 仅在浏览器（客户端）中加载 Bootstrap JS
         if (typeof window !== 'undefined') {
+            import('bootstrap/dist/css/bootstrap.css');
             import('bootstrap/dist/js/bootstrap.js');
         }
 

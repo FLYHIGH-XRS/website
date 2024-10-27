@@ -79,8 +79,6 @@ import "vue3-toastify/dist/index.css";
 import * as validityCheck from "../../static/js/validityCheck";
 import * as encrypt from '../../static/js/encrypt';
 
-import 'bootstrap/dist/css/bootstrap.css'
-
 export default {
     data() {
         return {

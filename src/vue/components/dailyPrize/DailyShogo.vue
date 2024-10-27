@@ -10,7 +10,6 @@
 
 <script>
 import * as shogo from "../../static/js/shogo.js";
-import 'bootstrap/dist/css/bootstrap.css'
 
 export default {
     data() {
