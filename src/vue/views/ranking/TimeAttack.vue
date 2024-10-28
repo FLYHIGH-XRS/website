@@ -341,7 +341,6 @@ export default {
 </script>
 
 <style scoped>
-@import 'bootstrap/dist/css/bootstrap.css';
 .lg-vp-ul-fix {
     padding-left: 0 !important;
     margin: 0 !important;
