@@ -1,8 +1,5 @@
 // Bootstrap
-if (typeof window !== 'undefined') {
-    import('bootstrap/dist/css/bootstrap.css');
-}
-/* import 'bootstrap/dist/css/bootstrap.css' */
+import 'bootstrap/dist/css/bootstrap.css'
 
 // Axios
 import axios from 'axios'
@@ -25,6 +22,8 @@ import { h, nextTick, watch } from 'vue'
 import { useRouter, type Route, type Router, type Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
+
+import './vp-bs-fix.css'
 
 NProgress.configure({
     easing: 'ease', // 动画方式
@@ -57,7 +56,7 @@ export default {
         if (typeof window !== 'undefined') {
             router.onBeforeRouteChange = (to) => {
                 return checkIsNeedToLogin(to, router);
-            }   
+            }
         }
 
         app.config.globalProperties.$jump = (url: string) => {
@@ -68,7 +67,7 @@ export default {
             router.onBeforePageLoad = () => {
                 NProgress.start();
             };
-        
+
             router.onAfterPageLoad = () => {
                 NProgress.done();
             };
