@@ -1,6 +1,5 @@
 // Bootstrap
 /* import 'bootstrap/dist/css/bootstrap.css' */
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Axios
 import axios from 'axios'
@@ -21,8 +20,8 @@ import 'nprogress/nprogress.css'
 // https://vitepress.dev/guide/custom-theme
 import { h, nextTick, watch } from 'vue'
 import { useRouter, type Route, type Router, type Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
 import './style.css'
+import DefaultTheme from 'vitepress/theme'
 
 NProgress.configure({
     easing: 'ease', // 动画方式
@@ -72,7 +71,6 @@ export default {
             };
         }
     },
-
 } satisfies Theme
 
 // 跳转需要用户数据的页面前，检查是否存在已登录的用户数据
