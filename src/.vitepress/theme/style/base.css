@@ -1,0 +1,251 @@
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box !important;
+}
+
+html {
+  line-height: 1.4 !important;
+  font-size: 16px !important;
+  -webkit-text-size-adjust: 100% !important;
+}
+
+html.dark {
+  color-scheme: dark !important;
+}
+
+body {
+  margin: 0 !important;
+  width: 100% !important;
+  min-width: 320px !important;
+  min-height: 100vh !important;
+  line-height: 24px !important;
+  font-family: var(--vp-font-family-base) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: var(--vp-c-text-1) !important;
+  background-color: var(--vp-c-bg) !important;
+  font-synthesis: style !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+main {
+  display: block !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 !important;
+  line-height: 24px !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+}
+
+p {
+  margin: 0 !important;
+}
+
+strong,
+b {
+  font-weight: 600 !important;
+}
+
+/**
+ * Avoid 300ms click delay on touch devices that support the `touch-action`
+ * CSS property.
+ *
+ * In particular, unlike most other browsers, IE11+Edge on Windows 10 on
+ * touch devices and IE Mobile 10-11 DON'T remove the click delay when
+ * `<meta name="viewport" content="width=device-width">` is present.
+ * However, they DO support removing the click delay via
+ * `touch-action: manipulation`.
+ *
+ * See:
+ * - http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
+ * - http://caniuse.com/#feat=css-touch-action
+ * - http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+ */
+a,
+area,
+button,
+[role='button'],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation !important;
+}
+
+a {
+  color: inherit !important;
+  text-decoration: inherit !important;
+}
+
+ol,
+ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+blockquote {
+  margin: 0 !important;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: var(--vp-font-family-mono) !important;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+
+img,
+video {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  border: 0 !important;
+  padding: 0 !important;
+  line-height: inherit !important;
+  color: inherit !important;
+}
+
+button {
+  padding: 0 !important;
+  font-family: inherit !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+button:enabled,
+[role='button']:enabled {
+  cursor: pointer !important;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 1px dotted !important;
+  outline: 4px auto -webkit-focus-ring-color !important;
+}
+
+button:focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+}
+
+table {
+  border-collapse: collapse !important;
+}
+
+input {
+  background-color: transparent !important;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: var(--vp-c-text-3) !important;
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+  color: var(--vp-c-text-3) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--vp-c-text-3) !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield !important;
+}
+
+textarea {
+  resize: vertical !important;
+}
+
+select {
+  -webkit-appearance: none !important;
+}
+
+fieldset {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+p {
+  overflow-wrap: break-word !important;
+}
+
+vite-error-overlay {
+  z-index: 9999 !important;
+}
+
+mjx-container {
+  overflow-x: auto !important;
+}
+
+mjx-container > svg {
+  display: inline-block !important;
+  margin: auto !important;
+}

@@ -1,0 +1,155 @@
+/**
+ * VPSponsors styles are defined as global because a new class gets
+ * allied in onMounted` hook and we can't use scoped style.
+ */
+.vp-sponsor {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.vp-sponsor.aside {
+  border-radius: 12px !important;
+}
+
+.vp-sponsor-section + .vp-sponsor-section {
+  margin-top: 4px !important;
+}
+
+.vp-sponsor-tier {
+  margin: 0 0 4px !important;
+  text-align: center !important;
+  letter-spacing: 1px !important;
+  line-height: 24px !important;
+  width: 100% !important;
+  font-weight: 600 !important;
+  color: var(--vp-c-text-2) !important;
+  background-color: var(--vp-c-bg-soft) !important;
+}
+
+.vp-sponsor.normal .vp-sponsor-tier {
+  padding: 13px 0 11px !important;
+  font-size: 14px !important;
+}
+
+.vp-sponsor.aside .vp-sponsor-tier {
+  padding: 9px 0 7px !important;
+  font-size: 12px !important;
+}
+
+.vp-sponsor-grid + .vp-sponsor-tier {
+  margin-top: 4px !important;
+}
+
+.vp-sponsor-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+}
+
+.vp-sponsor-grid.xmini .vp-sponsor-grid-link {
+  height: 64px !important;
+}
+.vp-sponsor-grid.xmini .vp-sponsor-grid-image {
+  max-width: 64px !important;
+  max-height: 22px !important;
+}
+
+.vp-sponsor-grid.mini .vp-sponsor-grid-link {
+  height: 72px !important;
+}
+.vp-sponsor-grid.mini .vp-sponsor-grid-image {
+  max-width: 96px !important;
+  max-height: 24px !important;
+}
+
+.vp-sponsor-grid.small .vp-sponsor-grid-link {
+  height: 96px !important;
+}
+.vp-sponsor-grid.small .vp-sponsor-grid-image {
+  max-width: 96px !important;
+  max-height: 24px !important;
+}
+
+.vp-sponsor-grid.medium .vp-sponsor-grid-link {
+  height: 112px !important;
+}
+.vp-sponsor-grid.medium .vp-sponsor-grid-image {
+  max-width: 120px !important;
+  max-height: 36px !important;
+}
+
+.vp-sponsor-grid.big .vp-sponsor-grid-link {
+  height: 184px !important;
+}
+.vp-sponsor-grid.big .vp-sponsor-grid-image {
+  max-width: 192px !important;
+  max-height: 56px !important;
+}
+
+.vp-sponsor-grid[data-vp-grid='2'] .vp-sponsor-grid-item {
+  width: calc((100% - 4px) / 2) !important;
+}
+
+.vp-sponsor-grid[data-vp-grid='3'] .vp-sponsor-grid-item {
+  width: calc((100% - 4px * 2) / 3) !important;
+}
+
+.vp-sponsor-grid[data-vp-grid='4'] .vp-sponsor-grid-item {
+  width: calc((100% - 4px * 3) / 4) !important;
+}
+
+.vp-sponsor-grid[data-vp-grid='5'] .vp-sponsor-grid-item {
+  width: calc((100% - 4px * 4) / 5) !important;
+}
+
+.vp-sponsor-grid[data-vp-grid='6'] .vp-sponsor-grid-item {
+  width: calc((100% - 4px * 5) / 6) !important;
+}
+
+.vp-sponsor-grid-item {
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  background-color: var(--vp-c-bg-soft) !important;
+  transition: background-color 0.25s !important;
+}
+
+.vp-sponsor-grid-item:hover {
+  background-color: var(--vp-c-default-soft) !important;
+}
+
+.vp-sponsor-grid-item:hover .vp-sponsor-grid-image {
+  filter: grayscale(0) invert(0) !important;
+}
+
+.vp-sponsor-grid-item.empty:hover {
+  background-color: var(--vp-c-bg-soft) !important;
+}
+
+.dark .vp-sponsor-grid-item:hover {
+  background-color: var(--vp-c-white) !important;
+}
+
+.dark .vp-sponsor-grid-item.empty:hover {
+  background-color: var(--vp-c-bg-soft) !important;
+}
+
+.vp-sponsor-grid-link {
+  display: flex !important;
+}
+
+.vp-sponsor-grid-box {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.vp-sponsor-grid-image {
+  max-width: 100% !important;
+  filter: grayscale(1) !important;
+  transition: filter 0.25s !important;
+}
+
+.dark .vp-sponsor-grid-image {
+  filter: grayscale(1) invert(1) !important;
+}

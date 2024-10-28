@@ -21,9 +21,22 @@ import 'nprogress/nprogress.css'
 import { h, nextTick, watch } from 'vue'
 import { useRouter, type Route, type Router, type Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import './style.css'
 
-import './vp-bs-fix.css'
+/* CSS FIX */
+import './style/base.css'
+import './style/fonts.css'
+import './style/icons.css'
+import './style/utils.css'
+import './style/vars.css'
+
+import './style/components/custom-block.css'
+import './style/components/vp-code-group.css'
+import './style/components/vp-code.css'
+import './style/components/vp-doc.css'
+import './style/components/vp-sponsor.css'
+/* CSS FIX */
+
+import './style.css'
 
 NProgress.configure({
     easing: 'ease', // 动画方式
