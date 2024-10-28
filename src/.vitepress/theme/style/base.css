@@ -15,38 +15,38 @@
 *,
 ::before,
 ::after {
-  box-sizing: border-box !important;
+  box-sizing: border-box;
 }
 
 html {
-  line-height: 1.4 !important;
-  font-size: 16px !important;
-  -webkit-text-size-adjust: 100% !important;
+  line-height: 1.4;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 html.dark {
-  color-scheme: dark !important;
+  color-scheme: dark;
 }
 
 body {
-  margin: 0 !important;
-  width: 100% !important;
-  min-width: 320px !important;
-  min-height: 100vh !important;
-  line-height: 24px !important;
-  font-family: var(--vp-font-family-base) !important;
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  color: var(--vp-c-text-1) !important;
-  background-color: var(--vp-c-bg) !important;
-  font-synthesis: style !important;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
+  margin: 0;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  line-height: 24px;
+  font-family: var(--vp-font-family-base);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--vp-c-text-1);
+  background-color: var(--vp-c-bg);
+  font-synthesis: style;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 main {
-  display: block !important;
+  display: block;
 }
 
 h1,
@@ -55,19 +55,19 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 !important;
-  line-height: 24px !important;
-  font-size: 16px !important;
-  font-weight: 400 !important;
+  margin: 0;
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 p {
-  margin: 0 !important;
+  margin: 0;
 }
 
 strong,
 b {
-  font-weight: 600 !important;
+  font-weight: 600;
 }
 
 /**
@@ -94,30 +94,30 @@ label,
 select,
 summary,
 textarea {
-  touch-action: manipulation !important;
+  touch-action: manipulation;
 }
 
 a {
-  color: inherit !important;
-  text-decoration: inherit !important;
+  color: inherit;
+  text-decoration: inherit;
 }
 
 ol,
 ul {
-  list-style: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 blockquote {
-  margin: 0 !important;
+  margin: 0;
 }
 
 pre,
 code,
 kbd,
 samp {
-  font-family: var(--vp-font-family-mono) !important;
+  font-family: var(--vp-font-family-mono);
 }
 
 img,
@@ -128,17 +128,17 @@ audio,
 iframe,
 embed,
 object {
-  display: block !important;
+  display: block;
 }
 
 figure {
-  margin: 0 !important;
+  margin: 0;
 }
 
 img,
 video {
-  max-width: 100% !important;
-  height: auto !important;
+  max-width: 100%;
+  height: auto;
 }
 
 button,
@@ -146,28 +146,28 @@ input,
 optgroup,
 select,
 textarea {
-  border: 0 !important;
-  padding: 0 !important;
-  line-height: inherit !important;
-  color: inherit !important;
+  border: 0;
+  padding: 0;
+  line-height: inherit;
+  color: inherit;
 }
 
 button {
-  padding: 0 !important;
-  font-family: inherit !important;
-  background-color: transparent !important;
-  background-image: none !important;
+  padding: 0;
+  font-family: inherit;
+  background-color: transparent;
+  background-image: none;
 }
 
 button:enabled,
 [role='button']:enabled {
-  cursor: pointer !important;
+  cursor: pointer;
 }
 
 button:focus,
 button:focus-visible {
-  outline: 1px dotted !important;
-  outline: 4px auto -webkit-focus-ring-color !important;
+  outline: 1px dotted;
+  outline: 4px auto -webkit-focus-ring-color;
 }
 
 button:focus:not(:focus-visible) {
@@ -177,53 +177,53 @@ button:focus:not(:focus-visible) {
 input:focus,
 textarea:focus,
 select:focus {
-  outline: none !important;
+  outline: none;
 }
 
 table {
-  border-collapse: collapse !important;
+  border-collapse: collapse;
 }
 
 input {
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-  color: var(--vp-c-text-3) !important;
+  color: var(--vp-c-text-3);
 }
 
 input::-ms-input-placeholder,
 textarea::-ms-input-placeholder {
-  color: var(--vp-c-text-3) !important;
+  color: var(--vp-c-text-3);
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--vp-c-text-3) !important;
+  color: var(--vp-c-text-3);
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none !important;
-  margin: 0 !important;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input[type='number'] {
-  -moz-appearance: textfield !important;
+  -moz-appearance: textfield;
 }
 
 textarea {
-  resize: vertical !important;
+  resize: vertical;
 }
 
 select {
-  -webkit-appearance: none !important;
+  -webkit-appearance: none;
 }
 
 fieldset {
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -234,18 +234,18 @@ h5,
 h6,
 li,
 p {
-  overflow-wrap: break-word !important;
+  overflow-wrap: break-word;
 }
 
 vite-error-overlay {
-  z-index: 9999 !important;
+  z-index: 9999;
 }
 
 mjx-container {
-  overflow-x: auto !important;
+  overflow-x: auto;
 }
 
 mjx-container > svg {
-  display: inline-block !important;
-  margin: auto !important;
+  display: inline-block;
+  margin: auto;
 }
