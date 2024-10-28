@@ -1,4 +1,7 @@
 // Bootstrap
+if (typeof window !== 'undefined') {
+    import('bootstrap/dist/css/bootstrap.css');
+}
 /* import 'bootstrap/dist/css/bootstrap.css' */
 
 // Axios
@@ -20,8 +23,8 @@ import 'nprogress/nprogress.css'
 // https://vitepress.dev/guide/custom-theme
 import { h, nextTick, watch } from 'vue'
 import { useRouter, type Route, type Router, type Theme } from 'vitepress'
-import './style.css'
 import DefaultTheme from 'vitepress/theme'
+import './style.css'
 
 NProgress.configure({
     easing: 'ease', // 动画方式
