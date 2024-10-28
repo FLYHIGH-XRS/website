@@ -78,3 +78,12 @@ const members = [
     },
 ]
 </script>
+
+## 鸣谢
+
+- [ZeroDream Racing](https://zerodream.net/)  
+- Season Racing Club | S R C  
+- KS Server [KS]  
+- BlueCat Server [BlueCat]  
+- Tsingtao Server [QD]  
+- [ProjectAsakura](https://github.com/ProjectAsakura)  
