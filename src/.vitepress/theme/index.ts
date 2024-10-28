@@ -23,18 +23,29 @@ import { useRouter, type Route, type Router, type Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 
 /* CSS FIX */
-import 'vitepress/dist/client/theme-default/styles/base.css';
-import 'vitepress/dist/client/theme-default/styles/base.css';
+/* import 'vitepress/dist/client/theme-default/styles/base.css';
 import 'vitepress/dist/client/theme-default/styles/fonts.css';
 import 'vitepress/dist/client/theme-default/styles/icons.css';
 import 'vitepress/dist/client/theme-default/styles/utils.css';
-import 'vitepress/dist/client/theme-default/styles/vars.css';
+import 'vitepress/dist/client/theme-default/styles/vars.css'; */
 
-import 'vitepress/dist/client/theme-default/styles/components/custom-block.css';
+import './styles/base.css';
+import './styles/fonts.css';
+import './styles/icons.css';
+import './styles/utils.css';
+import './styles/vars.css';
+
+/* import 'vitepress/dist/client/theme-default/styles/components/custom-block.css';
 import 'vitepress/dist/client/theme-default/styles/components/vp-code-group.css';
 import 'vitepress/dist/client/theme-default/styles/components/vp-code.css';
 import 'vitepress/dist/client/theme-default/styles/components/vp-doc.css';
-import 'vitepress/dist/client/theme-default/styles/components/vp-sponsor.css';
+import 'vitepress/dist/client/theme-default/styles/components/vp-sponsor.css'; */
+
+import './styles/components/custom-block.css';
+import './styles/components/vp-code-group.css';
+import './styles/components/vp-code.css';
+import './styles/components/vp-doc.css';
+import './styles/components/vp-sponsor.css';
 /* CSS FIX */
 
 import './style.css'
