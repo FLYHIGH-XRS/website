@@ -17,9 +17,12 @@ import "vitepress-markdown-timeline/dist/theme/index.css";
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
+// Medium Zoom
+import mediumZoom from 'medium-zoom'
+
 // https://vitepress.dev/guide/custom-theme
-import { h, nextTick, watch } from 'vue'
-import { useRouter, type Route, type Router, type Theme } from 'vitepress'
+import { h, nextTick, onMounted, watch } from 'vue'
+import { useRoute, useRouter, type Route, type Router, type Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 
 /* CSS FIX */
@@ -66,6 +69,19 @@ export default {
         return h(DefaultTheme.Layout, null, {
             // https://vitepress.dev/guide/extending-default-theme#layout-slots
         })
+    },
+    setup() {
+        const route = useRoute();
+        const initZoom = () => {
+            mediumZoom('.main img', { background: 'var(--vp-c-bg)' })
+        };
+        onMounted(() => {
+            initZoom();
+        });
+        watch(
+            () => route.path,
+            () => nextTick(() => initZoom()),
+        );
     },
     enhanceApp({ app, router, siteData }) {
         // ...

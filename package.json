@@ -14,6 +14,7 @@
         "axios": "^1.7.7",
         "bootstrap": "^5.3.3",
         "crypto-js": "^4.2.0",
+        "medium-zoom": "^1.1.0",
         "nprogress": "^0.2.0",
         "sass": "^1.80.4",
         "vitepress-markdown-timeline": "^1.2.1",

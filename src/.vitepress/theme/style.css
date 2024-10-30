@@ -148,3 +148,11 @@ table td {
 .nav {
   display: block !important;
 }
+
+.medium-zoom-image {
+  z-index: 9999 !important;
+}
+
+.medium-zoom-overlay {
+  z-index: 30 !important;
+}
