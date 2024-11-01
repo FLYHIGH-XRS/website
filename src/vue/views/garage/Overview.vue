@@ -117,7 +117,7 @@
                 <div class="card-body">
                     <h5 class="card-title">废车卡 ==> 满改券</h5>
                     <p class="normal-card-text">您可以将废车卡转换为满改券<br>比例为 5:1</p>
-                    <button type="button" style="width: 100%;" id="exchange600ToFTTBtn" class="btn btn-primary">
+                    <button type="button" style="width: 100%;" id="exchange600ToFTTBtn" class="btn btn-primary" @click="exchange600ToFTT()">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="exchange600ToFTTBtnSpinner" hidden></span>
                         兑换（可兑换 {{ calculateFTTExchangeNumber() }} 张）
                     </button>

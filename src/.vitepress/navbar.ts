@@ -31,6 +31,7 @@ export const navbar = [
         items: [
             { text: '计时挑战模式 排行榜', link: '/ranking/timeAttack' },
             { text: '全服冠军争夺战 排行榜', link: '/ranking/ocmRanking' },
+            { text: '海外化身对战 排行榜', link: '/ranking/vsorgRanking' },
         ]
     },
     { text: '车库', link: '/garage/overview' },

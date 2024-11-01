@@ -6,10 +6,17 @@ title: 概览
 
 <hr>
 
+::: timeline 2024/11/01
+
+- #1 海外化身对战 - 澳大利亚  
+    [Link =>](/events/latest)
+
+:::
+
 ::: timeline 2024/10/03
 
-- 限量车收集活动！收集GR SUPRA RZ(DB42)！  
-    [Link =>](/events/latest)
+- #1 限量车收集活动！收集GR SUPRA RZ(DB42)！  
+    [Link =>](/events/history/3)
 
 :::
 
