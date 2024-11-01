@@ -270,7 +270,7 @@ export default {
                 userId: this.userInfo.userInfo.userId
             }, {
                 timeout: 10000 // 10s超时
-            }).then((response) => {
+            }, { timeout: 10000 }).then((response) => {
                 if (response.data.fetchStatus) {
                     this.carList = response.data.car;
                 } else {
@@ -375,7 +375,7 @@ export default {
             this.isFullCustomColor = null; // 是否已经全车检色
             axios.post('/api/getCarInfo', {
                 carId: this.selectedCarId
-            }).then((response) => {
+            }, { timeout: 10000 }).then((response) => {
                 if (response.data.fetchStatus) {
                     this.input_CarName = response.data.car.name; // 名称
                     this.input_CarLevel = response.data.car.level; // 等级
@@ -464,7 +464,7 @@ export default {
                 userPassword: this.userInfo.userInfo.userPassword
             }, {
                 timeout: 10000 // 10s
-            }).then((response) => {
+            }, { timeout: 10000 }).then((response) => {
                 if (response.data.fetchStatus === true) {
                     toast("修改车辆信息成功！", {
                         "theme": "colored",
@@ -549,9 +549,7 @@ export default {
                 carId: this.selectedCarId,
                 operateUserQQ: this.userInfo.userInfo.userQQ,
                 userPassword: this.userInfo.userInfo.userPassword
-            }, {
-                timeout: 10000 // 10s
-            }).then((response) => {
+            }, { timeout: 10000 }).then((response) => {
                 if (response.data.giveStatus === true) {
                     toast("获取满车检色成功！\n请前往游戏终端机\n在您的车辆改装处即可更换车检色！", {
                         "theme": "colored",
@@ -616,9 +614,7 @@ export default {
                 carId: this.selectedCarId,
                 operateUserQQ: this.userInfo.userInfo.userQQ,
                 userPassword: this.userInfo.userInfo.userPassword
-            }, {
-                timeout: 10000 // 10s
-            }).then(response => {
+            }, { timeout: 10000 }).then(response => {
                 if (response.data.deleteStatus === true) {
                     toast("移出成功！", {
                         "theme": "colored",

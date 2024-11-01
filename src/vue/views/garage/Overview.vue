@@ -105,7 +105,8 @@
                     <div class="gift-card-code">
                         <button type="button" class="btn btn-success gift-card-code-btn" id="exchangeGiftCardBtn"
                             @click="exchangeGiftCard()">
-                            <span class="spinner-border spinner-border-sm" role="status" id="exchangeGiftCardBtnSpinner" aria-hidden="true" hidden></span>
+                            <span class="spinner-border spinner-border-sm" role="status" id="exchangeGiftCardBtnSpinner"
+                                aria-hidden="true" hidden></span>
                             兑换
                         </button>
                     </div>
@@ -117,8 +118,10 @@
                 <div class="card-body">
                     <h5 class="card-title">废车卡 ==> 满改券</h5>
                     <p class="normal-card-text">您可以将废车卡转换为满改券<br>比例为 5:1</p>
-                    <button type="button" style="width: 100%;" id="exchange600ToFTTBtn" class="btn btn-primary" @click="exchange600ToFTT()">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="exchange600ToFTTBtnSpinner" hidden></span>
+                    <button type="button" style="width: 100%;" id="exchange600ToFTTBtn" class="btn btn-primary"
+                        @click="exchange600ToFTT()">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                            id="exchange600ToFTTBtnSpinner" hidden></span>
                         兑换（可兑换 {{ calculateFTTExchangeNumber() }} 张）
                     </button>
                 </div>
@@ -132,7 +135,8 @@
                         <li class="card-text ct-vp-fix">本新站点正处于Beta阶段，如遇意外问题，请带上截图和触发问题的操作联系群主。</li>
                         <li class="card-text ct-vp-fix">若因站点问题导致用户数据丢失，请联系群主，我们会给予一定补偿。</li>
                         <li class="card-text ct-vp-fix">登入有效期为10分钟，超时将自动登出。</li>
-                        <li class="card-text ct-vp-fix">为保证您的Bana Passport卡号不被泄露，请勿在直播期间点击本页面中Bana Passport处的的“查看卡信息”按钮！</li>
+                        <li class="card-text ct-vp-fix">为保证您的Bana Passport卡号不被泄露，请勿在直播期间点击本页面中Bana Passport处的的“查看卡信息”按钮！
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -373,48 +377,47 @@ export default {
                 oldPass: encrypt.encryptPassword(this.originalPassword),
                 newPass: encrypt.encryptPassword(this.newPassword),
                 userQQ: this.userInfo.userInfo.userQQ
-            })
-                .then(response => {
-                    if (response.data.resetStatus === true) {
-                        toast("密码重置成功！\n请重新登录！", {
-                            "theme": "colored",
-                            "type": "success",
-                            "position": "top-center",
-                            "autoClose": 2000,
-                            "dangerouslyHTMLString": true
-                        });
-                        this.originalPassword = null;
-                        this.newPassword = null;
-                        sessionStorage.removeItem("UserInfo");
-                        setTimeout(() => {
-                            window.location.href = '/garage/login';
-                        }, 1000);
-                    } else {
-                        toast("密码重置失败！\n" + response.data.message, {
-                            "theme": "colored",
-                            "type": "error",
-                            "position": "top-center",
-                            "autoClose": 2000,
-                            "dangerouslyHTMLString": true
-                        });
-                        this.originalPassword = null;
-                        this.newPassword = null;
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    toast("密码重置失败！\n遇到了未知错误：\n" + error, {
+            }, {
+                timeout: 10000
+            }).then(response => {
+                if (response.data.resetStatus === true) {
+                    toast("密码重置成功！\n请重新登录！", {
+                        "theme": "colored",
+                        "type": "success",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    });
+                    this.originalPassword = null;
+                    this.newPassword = null;
+                    sessionStorage.removeItem("UserInfo");
+                    setTimeout(() => {
+                        window.location.href = '/garage/login';
+                    }, 1000);
+                } else {
+                    toast("密码重置失败！\n" + response.data.message, {
                         "theme": "colored",
                         "type": "error",
                         "position": "top-center",
                         "autoClose": 2000,
                         "dangerouslyHTMLString": true
                     });
-                })
-                .finally(() => {
-                    document.getElementById('resetBtnModalBtn').removeAttribute("disabled");
-                    document.getElementById('resetBtnModalBtnSpinner').hidden = true;
+                    this.originalPassword = null;
+                    this.newPassword = null;
+                }
+            }).catch(error => {
+                console.error(error);
+                toast("密码重置失败！\n遇到了未知错误：\n" + error, {
+                    "theme": "colored",
+                    "type": "error",
+                    "position": "top-center",
+                    "autoClose": 2000,
+                    "dangerouslyHTMLString": true
                 });
+            }).finally(() => {
+                document.getElementById('resetBtnModalBtn').removeAttribute("disabled");
+                document.getElementById('resetBtnModalBtnSpinner').hidden = true;
+            });
         },
         editUserName() {
             document.getElementById('editUserNameBtnModalBtn').setAttribute("disabled", "disabled");
@@ -435,46 +438,45 @@ export default {
             axios.post('/api/editUserName', {
                 newUserName: this.newUserName,
                 userQQ: this.userInfo.userInfo.userQQ
-            })
-                .then(response => {
-                    if (response.data.editStatus === true) {
-                        toast("用户名更改成功！\n请重新登录！\n", {
-                            "theme": "colored",
-                            "type": "success",
-                            "position": "top-center",
-                            "autoClose": 2000,
-                            "dangerouslyHTMLString": true
-                        });
-                        this.newUserName = null;
-                        sessionStorage.removeItem("UserInfo");
-                        setTimeout(() => {
-                            window.location.href = '/garage/login';
-                        }, 1000);
+            }, {
+                timeout: 10000
+            }).then(response => {
+                if (response.data.editStatus === true) {
+                    toast("用户名更改成功！\n请重新登录！\n", {
+                        "theme": "colored",
+                        "type": "success",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    });
+                    this.newUserName = null;
+                    sessionStorage.removeItem("UserInfo");
+                    setTimeout(() => {
+                        window.location.href = '/garage/login';
+                    }, 1000);
 
-                    } else {
-                        toast("用户名更改失败！\n" + response.data.message, {
-                            "theme": "colored",
-                            "type": "error",
-                            "position": "top-center",
-                            "autoClose": 2000,
-                            "dangerouslyHTMLString": true
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    toast("用户名更改失败！\n遇到了未知错误：\n" + error, {
+                } else {
+                    toast("用户名更改失败！\n" + response.data.message, {
                         "theme": "colored",
                         "type": "error",
                         "position": "top-center",
                         "autoClose": 2000,
                         "dangerouslyHTMLString": true
                     });
-                })
-                .finally(() => {
-                    document.getElementById('editUserNameBtnModalBtn').removeAttribute("disabled");
-                    document.getElementById('editUserNameBtnModalBtnSpinner').hidden = true;
+                }
+            }).catch(error => {
+                console.error(error);
+                toast("用户名更改失败！\n遇到了未知错误：\n" + error, {
+                    "theme": "colored",
+                    "type": "error",
+                    "position": "top-center",
+                    "autoClose": 2000,
+                    "dangerouslyHTMLString": true
                 });
+            }).finally(() => {
+                document.getElementById('editUserNameBtnModalBtn').removeAttribute("disabled");
+                document.getElementById('editUserNameBtnModalBtnSpinner').hidden = true;
+            });
         },
         calculateFTTExchangeNumber() {
             // 5:1兑换
@@ -485,45 +487,42 @@ export default {
             document.getElementById('exchange600ToFTTBtnSpinner').hidden = false;
             axios.post('/api/exchangeFTTTicket', {
                 userQQ: this.userInfo.userInfo.userQQ,
-                userPassword: encrypt.encryptPassword(this.userInfo.userInfo.userPassword)
+                userPassword: this.userInfo.userInfo.userPassword
             }, {
                 timeout: 10000
-            })
-                .then(response => {
-                    if (response.data.exchangeStatus === true) {
-                        toast("兑换成功！", {
-                            "theme": "colored",
-                            "type": "success",
-                            "position": "top-center",
-                            "autoClose": 2000,
-                            "dangerouslyHTMLString": true
-                        });
-                        this.userInfo.ticket600HpNumber = this.userInfo.ticket600HpNumber - 1;
-                        sessionStorage.setItem("UserInfo", JSON.stringify(this.userInfo));
-                    } else {
-                        toast("兑换失败！\n" + response.data.message, {
-                            "theme": "colored",
-                            "type": "error",
-                            "position": "top-center",
-                            "autoClose": 2000,
-                            "dangerouslyHTMLString": true
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    toast("兑换失败！\n遇到了未知错误：\n" + error, {
+            }).then(response => {
+                if (response.data.exchangeStatus === true) {
+                    toast("兑换成功！", {
+                        "theme": "colored",
+                        "type": "success",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    });
+                    this.userInfo.ticket600HpNumber = this.userInfo.ticket600HpNumber - 1;
+                    sessionStorage.setItem("UserInfo", JSON.stringify(this.userInfo));
+                } else {
+                    toast("兑换失败！\n" + response.data.message, {
                         "theme": "colored",
                         "type": "error",
                         "position": "top-center",
                         "autoClose": 2000,
                         "dangerouslyHTMLString": true
                     });
-                })
-                .finally(() => {
-                    document.getElementById('exchange600ToFTTBtn').removeAttribute("disabled");
-                    document.getElementById('exchange600ToFTTBtnSpinner').hidden = true;
+                }
+            }).catch(error => {
+                console.error(error);
+                toast("兑换失败！\n遇到了未知错误：\n" + error, {
+                    "theme": "colored",
+                    "type": "error",
+                    "position": "top-center",
+                    "autoClose": 2000,
+                    "dangerouslyHTMLString": true
                 });
+            }).finally(() => {
+                document.getElementById('exchange600ToFTTBtn').removeAttribute("disabled");
+                document.getElementById('exchange600ToFTTBtnSpinner').hidden = true;
+            });
         },
         checkTimeExpired() {
             let now = Math.floor(new Date().getTime() / 1000);
