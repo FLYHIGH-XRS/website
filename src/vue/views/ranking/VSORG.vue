@@ -69,7 +69,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="table-row" style="cursor: pointer;" v-for="(entry, index) in getPaginatedData()" :key="index">
+            <tr class="table-row" v-for="(entry, index) in getPaginatedData()" :key="index">
                 <td :class="getRowClass(index)" style="width: 5%;">
                     <div style="font-weight: bolder;">{{ index + 1 + (currentPage - 1) * itemsPerPage }}</div>
                 </td>
