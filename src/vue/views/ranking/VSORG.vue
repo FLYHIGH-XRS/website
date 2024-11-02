@@ -57,7 +57,7 @@
     </div>
 
     <!-- 电脑端布局 -->
-    <table class="table table-striped table-hover pc_table" id="pc_table" style="width: 100%; table-layout: fixed;">
+    <table class="table table-striped pc_table" id="pc_table" style="width: 100%; table-layout: fixed;">
         <thead>
             <tr class="table-header">
                 <th scope="col">排名</th>
@@ -94,7 +94,7 @@
     </table>
 
     <!-- 手机端布局 -->
-    <table class="table table-striped table-hover mobile_table" id="mobile_table"
+    <table class="table table-striped mobile_table" id="mobile_table"
         style="width: 100%; table-layout: fixed;">
         <tbody>
             <tr class="rankingBody mobile_table_body" v-for="(entry, index) in getPaginatedData()" :key="index">
