@@ -182,7 +182,7 @@
                     其他
                 </div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-primary w-100 mb-1" id="getFullCarColorBtn" @click="getFullCarColor()" disabled>
+                    <button type="button" class="btn btn-primary w-100 mb-1" id="getFullCarColorBtn" @click="getAllCustomColor()" disabled>
                         <span class="spinner-border spinner-border-sm" id="getFullCarColorBtnSpinner" role="status"
                             aria-hidden="true" hidden></span>
                         获取全车检色

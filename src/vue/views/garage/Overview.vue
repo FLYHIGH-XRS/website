@@ -520,7 +520,7 @@ export default {
                     "dangerouslyHTMLString": true
                 });
             }).finally(() => {
-                document.getElementById('exchange600ToFTTBtn').removeAttribute("disabled");
+                document.getElementById('exchange600ToFTTBtn').setAttribute("disabled", "disabled");
                 document.getElementById('exchange600ToFTTBtnSpinner').hidden = true;
             });
         },
