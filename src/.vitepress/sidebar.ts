@@ -50,6 +50,7 @@ export const sidebar = {
                         { text: '车辆跑偏', link: '/game/issueFix/2' },
                         { text: '游戏启动后直接闪退', link: '/game/issueFix/3' },
                         { text: '游戏过程中闪退（键盘操控）', link: '/game/issueFix/4' },
+                        { text: '终端机模式下黄色窗口报错：E2405', link: '/game/issueFix/5' },
                     ]
                 },
                 { text: '联机对战', link: '/game/vs' },
