@@ -100,17 +100,3 @@ export function isGiftCardCodeValid(giftCardCode) {
     const regex = /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/;
     return regex.test(giftCardCode);
 }
-
-export function storyValidityCheck(current_stNumber, input_CarStNumber) {
-    current_stNumber = Number(current_stNumber);
-    input_CarStNumber = Number(input_CarStNumber);
-    if (input_CarStNumber < current_stNumber) {
-        return ({ checkStatus: false, message: '故事集数不能小于当前故事集数！' });
-    }
-
-    if (current_stNumber === 99 || current_stNumber === 199 || current_stNumber === 299 || current_stNumber === 399 || current_stNumber === 499 || current_stNumber === 599 || current_stNumber === 699 || current_stNumber === 799 || current_stNumber === 899 || current_stNumber === 999) {
-        return ({ checkStatus: false, message: '请先完成当前故事，再修改至下一个故事集！' });
-    }
-
-    return ({ checkStatus: true, message: '检查通过' });
-}

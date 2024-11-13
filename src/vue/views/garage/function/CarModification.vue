@@ -450,35 +450,6 @@ export default {
             if (type === 'Basic') {
                 document.getElementById('basicUpdateBtnSpinner').hidden = false;
             } else if (type === 'Story') {
-                // 检查故事修改是否符合要求
-                const checkStatus = validityCheck.storyValidityCheck(this.current_stNumber, this.input_CarStNumber);
-                if (!checkStatus.checkStatus) {
-                    toast(checkStatus.message, {
-                        "theme": "colored",
-                        "type": "error",
-                        "position": "top-center",
-                        "autoClose": 2000,
-                        "dangerouslyHTMLString": true
-                    })
-                    for (let i = 0; i < Ids.length; i++) {
-                        document.getElementById(Ids[i]).removeAttribute('disabled');
-                    }
-                    // 清理所有数据
-                    this.input_CarName = null; // 名称
-                    this.input_CarLevel = 0; // 等级
-                    this.input_CarTitle = null; // 称号
-                    this.input_CarOdoMeter = null; // 公里数
-                    this.input_CarRgTrophy = null; // 化身奖杯数
-                    this.input_CarPlateNumber = null; // 车牌号
-                    this.input_CarRegionId = 0; // 车辆注册地区
-                    this.input_CarStNumber = 0; // 集数
-                    this.input_CarWheel = 0; // 轮毂
-                    this.isFullCustomColor = null; // 是否已经全车检色
-                    // 重新获取车辆信息
-                    this.getCarInfo();
-                    document.getElementById('storyUpdateBtnSpinner').hidden = true;
-                    return;
-                }
                 document.getElementById('storyUpdateBtnSpinner').hidden = false;
             } else if (type === 'Senior') {
                 document.getElementById('seniorUpdateBtnSpinner').hidden = false;
