@@ -121,7 +121,7 @@
                 </div>
                 <div class="card-body">
                     <div>
-                        <h5 class="card-title" v-if="input_CarStNumber">当前已完成：{{ input_CarStNumber }}集</h5>
+                        <h5 class="card-title" v-if="current_stNumber">当前已完成：{{ current_stNumber }}集</h5>
                         <h5 class="card-title" v-else>当前未选择车辆</h5>
                     </div>
                     <!-- 集数选择 -->
@@ -182,7 +182,8 @@
                     其他
                 </div>
                 <div class="card-body">
-                    <button type="button" class="btn btn-primary w-100 mb-1" id="getFullCarColorBtn" @click="getAllCustomColor()" disabled>
+                    <button type="button" class="btn btn-primary w-100 mb-1" id="getFullCarColorBtn"
+                        @click="getAllCustomColor()" disabled>
                         <span class="spinner-border spinner-border-sm" id="getFullCarColorBtnSpinner" role="status"
                             aria-hidden="true" hidden></span>
                         获取全车检色
@@ -190,7 +191,8 @@
                     <p class="form-text"
                         style="line-height: normal; margin-bottom: 5px; color: rgba(33, 37, 41, 0.75);">
                         若该按钮不可用，则代表您的车已获取了全车检色或者该车辆不允许获取全车检色。</p>
-                    <button type="button" class="btn btn-danger w-100 mb-1" id="deleteCarBtn" @click="deleteCar()" disabled>
+                    <button type="button" class="btn btn-danger w-100 mb-1" id="deleteCarBtn" @click="deleteCar()"
+                        disabled>
                         <span class="spinner-border spinner-border-sm" id="deleteCarBtnSpinner" role="status"
                             aria-hidden="true" hidden></span>
                         移除车辆
@@ -211,6 +213,7 @@ import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
 import * as carData from '../../../static/js/carModificationValues.js';
+import * as validityCheck from '../../../static/js/validityCheck';
 
 export default {
     data() {
@@ -235,6 +238,7 @@ export default {
             input_CarPlateNumber: null, // 车牌号
             input_CarRegionId: 0, // 车辆注册地区
             // 故事修改
+            current_stNumber: 0, // 当前集数
             input_CarStNumber: 0, // 集数
             // 高级修改
             input_CarWheel: 0,
@@ -370,6 +374,7 @@ export default {
             this.input_CarRgTrophy = null; // 化身奖杯数
             this.input_CarPlateNumber = null; // 车牌号
             this.input_CarRegionId = 0; // 车辆注册地区
+            this.current_stNumber = 0;
             this.input_CarStNumber = 0; // 集数
             this.input_CarWheel = 0; // 轮毂
             this.isFullCustomColor = null; // 是否已经全车检色
@@ -384,6 +389,7 @@ export default {
                     this.input_CarRgTrophy = response.data.car.rgTrophy; // 化身奖杯数
                     this.input_CarPlateNumber = response.data.car.plateNumber; // 车牌号
                     this.input_CarRegionId = response.data.car.regionId; // 车辆注册地区
+                    this.current_stNumber = response.data.car.stClearCount; // 集数
                     this.input_CarStNumber = response.data.car.stClearCount; // 集数
                     this.input_CarWheel = response.data.car.wheel; // 轮毂
                     this.isFullCustomColor = response.data.car.isFullCustomColor; // 是否已经全车检色
@@ -444,6 +450,35 @@ export default {
             if (type === 'Basic') {
                 document.getElementById('basicUpdateBtnSpinner').hidden = false;
             } else if (type === 'Story') {
+                // 检查故事修改是否符合要求
+                const checkStatus = validityCheck.storyValidityCheck(this.current_stNumber, this.input_CarStNumber);
+                if (!checkStatus.checkStatus) {
+                    toast(checkStatus.message, {
+                        "theme": "colored",
+                        "type": "error",
+                        "position": "top-center",
+                        "autoClose": 2000,
+                        "dangerouslyHTMLString": true
+                    })
+                    for (let i = 0; i < Ids.length; i++) {
+                        document.getElementById(Ids[i]).removeAttribute('disabled');
+                    }
+                    // 清理所有数据
+                    this.input_CarName = null; // 名称
+                    this.input_CarLevel = 0; // 等级
+                    this.input_CarTitle = null; // 称号
+                    this.input_CarOdoMeter = null; // 公里数
+                    this.input_CarRgTrophy = null; // 化身奖杯数
+                    this.input_CarPlateNumber = null; // 车牌号
+                    this.input_CarRegionId = 0; // 车辆注册地区
+                    this.input_CarStNumber = 0; // 集数
+                    this.input_CarWheel = 0; // 轮毂
+                    this.isFullCustomColor = null; // 是否已经全车检色
+                    // 重新获取车辆信息
+                    this.getCarInfo();
+                    document.getElementById('storyUpdateBtnSpinner').hidden = true;
+                    return;
+                }
                 document.getElementById('storyUpdateBtnSpinner').hidden = false;
             } else if (type === 'Senior') {
                 document.getElementById('seniorUpdateBtnSpinner').hidden = false;
