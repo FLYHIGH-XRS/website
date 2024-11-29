@@ -18,7 +18,7 @@ const timeList = [
 <OCMInfoDisplay
     imgSrc="https://pics-a1c.pages.dev/ng_web/events/ocm/3-fukuoka.png"
     preRaceTime="2024/11/29 14:00 ~ 2024/12/15 23:00"
-    mainDrawTime="2024/12/16 0:00 ~ 2025/12/29 0:00"
+    mainDrawTime="2024/12/16 0:00 ~ 2024/12/29 0:00"
     :timeList="timeList"
 />
 

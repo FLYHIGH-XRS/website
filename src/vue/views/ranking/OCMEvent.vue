@@ -161,6 +161,7 @@ export default {
             document.getElementById('reloadBtnSpinner').hidden = false;
 
             // 获取数据
+            console.log(document.getElementById('floatingSelectGrid_Race').value);
             axios.post('/api/ocmRaceResult', {
                 competitionId: document.getElementById('floatingSelectGrid_Race').value,
             }, {
@@ -204,16 +205,12 @@ export default {
                     if (this.leaderboard.length === 0) {
                         document.getElementById('loadingText').innerHTML = '暂无数据';
                         document.getElementById('loadingText').hidden = false;
-                    } else {
-                        document.getElementById('loadingText').innerHTML = '加载数据中......请稍候';
-                        document.getElementById('loadingText').hidden = true;
-                    }
-                    // 显示表格
-                    if (this.leaderboard.length === 0) {
                         console.log('暂无数据');
                         document.getElementById('pc_table').hidden = true;
                         document.getElementById('mobile_table').hidden = true;
                     } else {
+                        document.getElementById('loadingText').innerHTML = '加载数据中......请稍候';
+                        document.getElementById('loadingText').hidden = true;
                         document.getElementById('pc_table').hidden = false;
                         document.getElementById('mobile_table').hidden = false;
                     }
@@ -241,10 +238,18 @@ export default {
         getPaginatedData() {
             const start = (this.currentPage - 1) * this.itemsPerPage;
             const end = start + this.itemsPerPage;
-            return this.leaderboard.slice(start, end);
+            if (typeof (this.leaderboard) !== 'object') {
+                return [];
+            } else {
+                return this.leaderboard.slice(start, end);
+            }
         },
         totalPages() {
-            return Math.ceil(this.leaderboard.length / this.itemsPerPage);
+            if (typeof (this.leaderboard) !== 'object') {
+                return 0;
+            } else {
+                return Math.ceil(this.leaderboard.length / this.itemsPerPage);
+            }
         },
     },
     mounted() {
