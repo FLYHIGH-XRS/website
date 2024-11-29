@@ -40,7 +40,7 @@ export default defineConfig({
         // 底部 编辑此文档
         editLink: {
             text: '在 GitHub 上编辑此页面',
-            pattern: 'https://github.com/FLYHIGH-XRS/website/blob/main/docs/:path'
+            pattern: 'https://github.com/FLYHIGH-XRS/website/blob/main/src/:path'
         },
         // 汉化
         lastUpdatedText: '最后一次更新于',
