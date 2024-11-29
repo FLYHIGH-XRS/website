@@ -7,9 +7,9 @@
                 <dd>
                     <div class="clearfix">
                         <figure><img :src="namePlate1Src1" :alt="namePlate1Name"></figure>
-                        <figure><img :src="namePlate1Src2" :alt="namePlate1Name"></figure>
-                        <figure><img :src="namePlate1Src3" :alt="namePlate1Name"></figure>
-                        <figure><img :src="namePlate1Src4" :alt="namePlate1Name"></figure>
+                        <figure v-if="namePlate1Src2"><img :src="namePlate1Src2" :alt="namePlate1Name"></figure>
+                        <figure v-if="namePlate1Src3"><img :src="namePlate1Src3" :alt="namePlate1Name"></figure>
+                        <figure v-if="namePlate1Src4"><img :src="namePlate1Src4" :alt="namePlate1Name"></figure>
                     </div>
                 </dd>
                 <!-- 预赛铭牌2 -->
@@ -17,9 +17,9 @@
                 <dd>
                     <div class="clearfix">
                         <figure><img :src="namePlate2Src1" :alt="namePlate2Name"></figure>
-                        <figure><img :src="namePlate2Src2" :alt="namePlate2Name"></figure>
-                        <figure><img :src="namePlate2Src3" :alt="namePlate2Name"></figure>
-                        <figure><img :src="namePlate2Src4" :alt="namePlate2Name"></figure>
+                        <figure v-if="namePlate2Src2"><img :src="namePlate2Src2" :alt="namePlate2Name"></figure>
+                        <figure v-if="namePlate2Src3"><img :src="namePlate2Src3" :alt="namePlate2Name"></figure>
+                        <figure v-if="namePlate2Src4"><img :src="namePlate2Src4" :alt="namePlate2Name"></figure>
                     </div>
                 </dd>
                 <!-- 预赛铭牌3 -->
@@ -27,9 +27,9 @@
                 <dd>
                     <div class="clearfix">
                         <figure><img :src="namePlate3Src1" :alt="namePlate3Name"></figure>
-                        <figure><img :src="namePlate3Src2" :alt="namePlate3Name"></figure>
-                        <figure><img :src="namePlate3Src3" :alt="namePlate3Name"></figure>
-                        <figure><img :src="namePlate3Src4" :alt="namePlate3Name"></figure>
+                        <figure v-if="namePlate3Src2"><img :src="namePlate3Src2" :alt="namePlate3Name"></figure>
+                        <figure v-if="namePlate3Src3"><img :src="namePlate3Src3" :alt="namePlate3Name"></figure>
+                        <figure v-if="namePlate3Src4"><img :src="namePlate3Src4" :alt="namePlate3Name"></figure>
                     </div>
                 </dd>
                 <!-- 预赛铭牌4 -->
@@ -37,9 +37,9 @@
                 <dd>
                     <div class="clearfix">
                         <figure><img :src="namePlate4Src1" :alt="namePlate4Name"></figure>
-                        <figure><img :src="namePlate4Src2" :alt="namePlate4Name"></figure>
-                        <figure><img :src="namePlate4Src3" :alt="namePlate4Name"></figure>
-                        <figure><img :src="namePlate4Src4" :alt="namePlate4Name"></figure>
+                        <figure v-if="namePlate4Src2"><img :src="namePlate4Src2" :alt="namePlate4Name"></figure>
+                        <figure v-if="namePlate4Src3"><img :src="namePlate4Src3" :alt="namePlate4Name"></figure>
+                        <figure v-if="namePlate4Src4"><img :src="namePlate4Src4" :alt="namePlate4Name"></figure>
                     </div>
                 </dd>
             </dl>
@@ -59,27 +59,27 @@ export default {
         // 第一个铭牌
         namePlate1Name: { type: String, required: true },
         namePlate1Src1: { type: String, required: true },
-        namePlate1Src2: { type: String, required: true },
-        namePlate1Src3: { type: String, required: true },
-        namePlate1Src4: { type: String, required: true },
+        namePlate1Src2: { type: String, required: false },
+        namePlate1Src3: { type: String, required: false },
+        namePlate1Src4: { type: String, required: false },
         // 第二个铭牌
         namePlate2Name: { type: String, required: true },
         namePlate2Src1: { type: String, required: true },
-        namePlate2Src2: { type: String, required: true },
-        namePlate2Src3: { type: String, required: true },
-        namePlate2Src4: { type: String, required: true },
+        namePlate2Src2: { type: String, required: false },
+        namePlate2Src3: { type: String, required: false },
+        namePlate2Src4: { type: String, required: false },
         // 第三个铭牌
         namePlate3Name: { type: String, required: true },
         namePlate3Src1: { type: String, required: true },
-        namePlate3Src2: { type: String, required: true },
-        namePlate3Src3: { type: String, required: true },
-        namePlate3Src4: { type: String, required: true },
+        namePlate3Src2: { type: String, required: false },
+        namePlate3Src3: { type: String, required: false },
+        namePlate3Src4: { type: String, required: false },
         // 第四个铭牌
         namePlate4Name: { type: String, required: true },
         namePlate4Src1: { type: String, required: true },
-        namePlate4Src2: { type: String, required: true },
-        namePlate4Src3: { type: String, required: true },
-        namePlate4Src4: { type: String, required: true },
+        namePlate4Src2: { type: String, required: false },
+        namePlate4Src3: { type: String, required: false },
+        namePlate4Src4: { type: String, required: false },
     }
 }
 </script>

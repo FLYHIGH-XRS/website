@@ -5,6 +5,7 @@
             <div class="form-floating">
                 <select class="form-select" id="floatingSelectGrid_Race" aria-label="Floating label select"
                     @change="getOcmRaceRanking()">
+                    <option value="3">#3 第3回（再） 福冈区域</option>
                     <option value="2">#2 第17回 大阪区域</option>
                     <option value="1">#1 第19回 名古屋区域</option>
                 </select>

@@ -8,16 +8,17 @@ export const sidebar = {
         {
             text: '最新活动',
             items: [
-                { text: '海外化身对战 - 澳大利亚', link: '/events/latest' }
+                { text: '#3 第3回（再） OCM 福冈区域', link: '/events/latest' }
             ]
         },
         {
             text: '历史活动',
             items: [
                 { text: '概览', link: '/events/history/overview' },
+                { text: '#1 海外化身对战 - 澳大利亚', link: '/events/history/4' },
+                { text: '#1 限量车收集活动', link: '/events/history/3' },
                 { text: '#2 第17回 OCM 大阪区域', link: '/events/history/2' },
                 { text: '#1 第19回 OCM 名古屋区域', link: '/events/history/1' },
-                { text: '#1 限量车收集活动', link: '/events/history/3' },
             ]
         },
     ],

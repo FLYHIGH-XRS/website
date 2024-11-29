@@ -6,10 +6,17 @@ title: 概览
 
 <hr>
 
+::: timeline 2024/11/29
+
+- #3 第3回（再） 全服冠军争夺战 福冈区域  
+    [Link =>](/events/latest)
+
+:::
+
 ::: timeline 2024/11/01
 
 - #1 海外化身对战 - 澳大利亚  
-    [Link =>](/events/latest)
+    [Link =>](/events/history/4)
 
 :::
 
